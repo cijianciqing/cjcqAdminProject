@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>SB Admin 2 - Dashboard</title>
+    <th:block th:replace="~{fragment/adminFragment :: cjAdmin_head}"/>
+</head>
+<body>
+<!--<button class="button btn-primary">testButton</button>
+<h1>this is my 4xx page</h1>
+<h1>[[${timestamp}]]</h1>
+<h1>[[${status}]]</h1>-->
+<div class="container-fluid">
+
+    <!-- 404 Error Text -->
+    <div class="text-center">
+        <div class="error mx-auto" data-text="500">500</div>
+        <p class="lead text-gray-800 mb-5">Error : 请联系系统管理员</p>
+        <a th:href="@{/admin}" href="index.html">&larr; Back to Dashboard</a>
+    </div>
+
+</div>
+
+<th:block th:replace="~{fragment/adminFragment :: cjAdmin_js}"></th:block>
+
+</body>
+</html>

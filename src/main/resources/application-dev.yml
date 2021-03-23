@@ -1,0 +1,73 @@
+
+
+
+
+####################################
+#              开发环境            #
+####################################
+## embedded tomcat9配置
+server:
+  port: 8082
+  servlet:
+    ##session配置
+    session:
+      #设置session超时时间，默认30min,最短1min,设置 单位是秒
+      timeout: 1800
+
+
+# 数据源配置
+spring:
+  datasource:
+    url: jdbc:mysql://172.20.1.117:3306/cjcq?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: wqn
+    password: wqn641214
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  #jpa配置
+  jpa:
+    # 其实是之前的openEntityManagerInViewInterceptor，解决在Spring MVC与JPA之间Session的声明周期问题
+    open-in-view: true
+    hibernate:
+      #创建或者更新数据表
+      ddl-auto: update
+      naming:
+        #按照代码生成表名，而不是根据驼峰命名法换成下划线
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    #创建mysql表时，使用innodb引擎,在hibernate.properties中配置进行代替
+    #MySQL5InnoDBDialect，被标注@Deprecated
+    #database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+    properties:
+      #sql语句格式化输出
+      hibernate.format_sql: true
+    #显示sql
+    show-sql: true
+
+  # thymeleaf3配置
+  thymeleaf:
+    cache: false
+    check-template: false
+    check-template-location: false
+  servlet:
+    ##文件上传
+    multipart:
+      #是否支持批量上传(默认值true)
+      enabled: true
+      #上传文件最大为1M（默认值1M根据自身业务自行控制即可）
+      max-file-size: 10MB
+      #上传请求最大为10M（默认值10M根据自身业务自行控制即可）
+      max-request-size: 100MB
+#  # ehcache配置
+#  cache:
+#    type: ehcache
+#    ehcache:
+#      config: classpath:ehcache-dev.xml
+#
+## 日志配置
+#logging:
+#  config: classpath:logback-spring-dev.xml
+#
+
+
+## 图片上传路径
+#imageUploadPath: D:/dev/images/

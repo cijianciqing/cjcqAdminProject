@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <!--【 TRACE < DEBUG < INFO < WARN < ERROR < fatal 】-->
+    <property name="log.level" value="debug" />
+    <property name="log.pattern" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level - %msg%n" />
+    <property name="log.filePath" value="E:/java/cjLog" />
+    <property name="log.maxHistory" value="15" />
+    <property name="log.maxFileSize" value="50MB" />
+    <property name="log.totalFileSize" value="500MB" />
+
+
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%green(%d{yyyy-MM-dd HH:mm:ss.SSS}) %yellow([%thread]) %highlight(%-5level) %cyan(%logger{50}) - %highlight(%msg) %n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    <appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.filePath}/cjRoot.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.filePath}/rootLog/log-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxHistory>${log.maxHistory}</maxHistory>
+            <maxFileSize>${log.maxFileSize}</maxFileSize>
+            <totalSizeCap>${log.totalFileSize}</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+       <!-- <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>-->
+    </appender>
+
+    <appender name="warnAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.filePath}/cj/warn.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.filePath}/cj/warn/warn-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxHistory>${log.maxHistory}</maxHistory>
+            <maxFileSize>${log.maxFileSize}</maxFileSize>
+            <totalSizeCap>${log.totalFileSize}</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+    <appender name="errorAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.filePath}/cj/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.filePath}/cj/error/error-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxHistory>${log.maxHistory}</maxHistory>
+            <maxFileSize>${log.maxFileSize}</maxFileSize>
+            <totalSizeCap>${log.totalFileSize}</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+
+    <!--【 addtivity: 是否向上级loger传递打印信息。默认是true 】-->
+    <!--
+    我自己的代码如果出现日志则单独记录，只记录warn和error级别日志
+    level="warn"
+    -->
+    <logger name="cn.ns.cj.logdemo"  additivity="true">
+        <appender-ref ref="warnAppender"/>
+        <appender-ref ref="errorAppender"/>
+    </logger>
+    <!--【 默认是DEBUG 】，所有大于等于DEBUG级别的日志会输出到控制台 -->
+    <!--
+      所有的info以上日志都会输出到控制台并写到日志文件中
+    -->
+    <root level="info">
+        <appender-ref ref="consoleAppender"/>
+        <appender-ref ref="fileAppender"/>
+    </root>
+</configuration>
+<!--
+日志使用：
+private final static Logger logger = LoggerFactory.getLogger(App.class);
+logger.info("logback 成功了");
+-->

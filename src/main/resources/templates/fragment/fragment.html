@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>CJ LearningNotes</title>
+    <th:block th:fragment="cjLearning_head">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!--favourite icon-->
+        <link rel="shortcut icon" th:href="@{/icon/favicon.ico}"/>
+        <link rel="bookmark" th:href="@{/icon/favicon.ico}"/>
+        <!--公共css-->
+        <!-- Custom fonts for this template-->
+<!--        <link th:href="@{/cjThirdStatic/fontawesome-free/css/all.min.css}"-->
+<!--              href="vendor/fontawesome-free/css/all.min.css"-->
+<!--              rel="stylesheet" type="text/css">-->
+        <!-- Font Awesome Icons -->
+        <link rel="stylesheet" th:href="@{/node_modules/@fortawesome/fontawesome-free/css/all.css}" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+        <!--bootstrap css-->
+<!--        <link th:href="@{/cjThirdStatic/bootstrap/css/bootstrap.css}"-->
+<!--              href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">-->
+        <!-- Theme style  代替了之前的bootstrap css ???20210318-->
+        <link rel="stylesheet" th:href="@{/node_modules/admin-lte/dist/css/adminlte.css}" href="node_modules/admin-lte/dist/css/adminlte.css">
+        <!--dataTable--默认 css-->
+<!--        <link th:href="@{/cjThirdStatic/datatables/datatables.css}"-->
+<!--              href="vendor/datatables/datatables.css" rel="stylesheet">-->
+        <!--下面为bootstrap4风格时使用 是否需要，有待考虑 ???20210318-->
+        <link th:href="@{/cjThirdStatic/datatables/dataTables.bootstrap4.css}"
+              href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+
+
+        <link th:href="@{/cjThirdStatic/datatables/plugins/select/select.dataTables.min.css}"
+              href="vendor/datatables/plugins/select/select.dataTables.min.css" rel="stylesheet">
+        <link th:href="@{/cjThirdStatic/datatables/plugins/Buttons-1.6.5/css/buttons.bootstrap4.css}"
+              href="vendor/datatables/plugins/Buttons-1.6.5/css/buttons.bootstrap4.css" rel="stylesheet">
+
+
+        <link th:href="@{/cjThirdStatic/bootstrap/bootstrap-select/css/bootstrap-select.css}"
+              href="vendor/bootstrap/bootstrap-select/css/bootstrap-select.css" rel="stylesheet">
+
+        <!--ztree-->
+        <link th:href="@{/cjThirdStatic/ztree/css/zTreeStyle/zTreeStyle.css}"
+              href="vendor/ztree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+
+
+        <!-- overlayScrollbars -->
+        <link rel="stylesheet" th:href="@{/node_modules/overlayscrollbars/css/OverlayScrollbars.css}" href="node_modules/overlayscrollbars/css/OverlayScrollbars.css">
+
+
+    </th:block>
+</head>
+
+<body>
+<th:block th:fragment="cjLearning_js">
+
+
+    <!-- REQUIRED SCRIPTS -->
+    <!-- jQuery -->
+    <script th:src="@{/node_modules/jquery/dist/jquery.js}" src="node_modules/jquery/dist/jquery.js"></script>
+    <!-- Bootstrap -->
+    <script th:src="@{/node_modules/bootstrap/dist/js/bootstrap.bundle.js}" src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+    <!-- overlayScrollbars -->
+    <script th:src="@{/node_modules/overlayscrollbars/js/jquery.overlayScrollbars.js}" src="node_modules/overlayscrollbars/js/jquery.overlayScrollbars.js"></script>
+    <!-- AdminLTE App -->
+    <script th:src="@{/node_modules/admin-lte/dist/js/adminlte.js}" src="node_modules/admin-lte/dist/js/adminlte.js"></script>
+
+    <!-- OPTIONAL SCRIPTS -->
+    <script th:src="@{/node_modules/admin-lte/dist/js/demo.js}" src="node_modules/admin-lte/dist/js/demo.js"></script>
+
+    <!-- PAGE PLUGINS -->
+    <!-- jQuery Mapael -->
+    <script th:src="@{/node_modules/jquery-mousewheel/jquery.mousewheel.js}"  src="node_modules/jquery-mousewheel/jquery.mousewheel.js"></script>
+    <script th:src="@{/node_modules/raphael/raphael.js}" src="node_modules/raphael/raphael.js"></script>
+    <script th:src="@{/node_modules/jquery-mapael/js/jquery.mapael.js}" src="node_modules/jquery-mapael/js/jquery.mapael.js"></script>
+
+    <!-- ChartJS -->
+    <script th:src="@{/node_modules/chart.js/dist/Chart.js}" src="node_modules/chart.js/dist/Chart.js"></script>
+
+    <!-- Bootstrap Switch -->
+    <script  th:src="@{/node_modules/bootstrap-switch/dist/js/bootstrap-switch.min.js}" src="node_modules/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+    <!-- PAGE SCRIPTS 暂时禁用-->
+<!--    <script th:src="@{/node_modules/admin-lte/dist/js/pages/dashboard2.js}" src="node_modules/admin-lte/dist/js/pages/dashboard2.js"></script>-->
+
+
+
+<!--之前的JS-->
+    <!-- Core plugin JavaScript-->
+    <script th:src="@{/cjThirdStatic/jquery-easing/jquery.easing.js}"
+            src="vendor/jquery-easing/jquery.easing.js"></script>
+
+    <!-- Page level plugins -->
+
+
+
+    <!-- dataTables- -->
+    <script th:src="@{/cjThirdStatic/datatables/jquery.dataTables.js}"
+            src="vendor/datatables/jquery.dataTables.js"></script>
+    <!-- dataTables--bootstrap -->
+    <script th:src="@{/cjThirdStatic/datatables/dataTables.bootstrap4.js}"
+            src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+    <!--select插件-->
+    <script th:src="@{/cjThirdStatic/datatables/plugins/select/dataTables.select.min.js}"
+            src="vendor/datatables/plugins/select/dataTables.select.min.js"></script>
+
+    <script th:src="@{/cjThirdStatic/datatables/plugins/Buttons-1.6.5/js/dataTables.buttons.js}"
+            src="vendor/datatables/plugins/Buttons-1.6.5/js/dataTables.buttons.js"></script>
+    <script th:src="@{/cjThirdStatic/datatables/plugins/Buttons-1.6.5/js/buttons.bootstrap4.js}"
+            src="vendor/datatables/plugins/Buttons-1.6.5/js/buttons.bootstrap4.js"></script>
+    <script th:src="@{/cjThirdStatic/datatables/plugins/Buttons-1.6.5/js/buttons.colVis.js}"
+            src="vendor/datatables/plugins/Buttons-1.6.5/js/buttons.colVis.js"></script>
+
+    <!--bootstrap select-->
+    <script th:src="@{/cjThirdStatic/bootstrap/bootstrap-select/js/bootstrap-select.js}"
+            src="vendor/bootstrap/bootstrap-select/js/bootstrap-select.js"></script>
+    <script th:src="@{/cjThirdStatic/bootstrap/bootstrap-select/js/i18n/defaults-zh_CN.js}"
+            src="vendor/bootstrap/bootstrap-select/js/i18n/defaults-zh_CN.js"></script>
+
+    <!--ztree-->
+    <script th:src="@{/cjThirdStatic/ztree/js/jquery.ztree.all.js}" src="vendor/ztree/js/jquery.ztree.all.js"></script>
+    <!--ckeditor4--classic-->
+    <script src="vendor/ckeditor_all/ckeditor4/ckeditor.js"
+            th:src="@{/cjThirdStatic/ckeditor_all/ckeditor4/ckeditor.js}"></script>
+
+    <!-- layer -->
+<!--    <script src="vendor/layer/layer.js"-->
+<!--            th:src="@{/cjThirdStatic/layer/layer.js}"></script>-->
+    <!--bootstrap box-->
+    <script src="vendor/bootstrap/bootbox/bootbox.js" th:src="@{/cjThirdStatic/bootstrap/bootbox/bootbox.js}"></script>
+    <script src="vendor/bootstrap/bootbox/bootbox.locales.js" th:src="@{/cjThirdStatic/bootstrap/bootbox/bootbox.locales.js}"></script>
+</th:block>
+</body>
+
+</html>

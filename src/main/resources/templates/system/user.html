@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>CJAdmin SysUser </title>
+    <th:block th:replace="~{fragment/fragment :: cjLearning_head}"/>
+
+</head>
+
+<body>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a class="nav-link" href="index3.html">Home</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+
+        <!-- SEARCH FORM -->
+        <form class="form-inline ml-3">
+            <div class="input-group input-group-sm">
+                <input aria-label="Search" class="form-control form-control-navbar" placeholder="Search" type="search">
+                <div class="input-group-append">
+                    <button class="btn btn-navbar" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <!-- Messages Dropdown Menu -->
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-comments"></i>
+                    <span class="badge badge-danger navbar-badge">3</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <a class="dropdown-item" href="#">
+                        <!-- Message Start -->
+                        <div class="media">
+                            <img alt="User Avatar"
+                                 class="img-size-50 mr-3 img-circle"
+                                 src="node_modules/admin-lte/dist/img/user1-128x128.jpg"
+                                 th:src="@{/node_modules/admin-lte/dist/img/user1-128x128.jpg}">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    Brad Diesel
+                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">Call me whenever you can...</p>
+                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            </div>
+                        </div>
+                        <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <!-- Message Start -->
+                        <div class="media">
+                            <img alt="User Avatar"
+                                 class="img-size-50 img-circle mr-3"
+                                 src="node_modules/admin-lte/dist/img/user8-128x128.jpg"
+                                 th:src="@{/node_modules/admin-lte/dist/img/user8-128x128.jpg}">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    John Pierce
+                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">I got your message bro</p>
+                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            </div>
+                        </div>
+                        <!-- Message End -->
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item dropdown-footer" href="#">See All Messages</a>
+                </div>
+            </li>
+            <!-- Notifications Dropdown Menu -->
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-bell"></i>
+                    <span class="badge badge-warning navbar-badge">15</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-item dropdown-header">15 Notifications</span>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-envelope mr-2"></i> 4 new messages
+                        <span class="float-right text-muted text-sm">3 mins</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-users mr-2"></i> 8 friend requests
+                        <span class="float-right text-muted text-sm">12 hours</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-file mr-2"></i> 3 new reports
+                        <span class="float-right text-muted text-sm">2 days</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item dropdown-footer" href="#">See All Notifications</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-slide="false" data-widget="control-sidebar" href="#" role="button"><i
+                        class="fas fa-th-large"></i></a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /.navbar -->
+
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a class="brand-link" href="index3.html">
+            <img alt="AdminLTE Logo"
+                 class="brand-image img-circle elevation-3" src="node_modules/admin-lte/dist/img/AdminLTELogo.png"
+                 style="opacity: .8"
+                 th:src="@{/node_modules/admin-lte/dist/img/AdminLTELogo.png}">
+            <span class="brand-text font-weight-light">AdminLTE 3</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img alt="User Image"
+                         class="img-circle elevation-2" src="node_modules/admin-lte/dist/img/user2-160x160.jpg"
+                         th:src="@{/node_modules/admin-lte/dist/img/user2-160x160.jpg}">
+                </div>
+                <div class="info">
+                    <a class="d-block" href="#">Alexander Pierce</a>
+                </div>
+            </div>
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-accordion="false"
+                    data-widget="treeview"
+                    role="menu">
+                    <!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+                    <li class="nav-item has-treeview menu-open">
+                        <a class="nav-link active" href="#">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                系统管理
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview ">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/templates/system/user.html"
+                                   th:href="@{/admin/system/user}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>用户管理</p>
+                                </a>
+                            </li>
+                            <li class="nav-item has-treeview ">
+                                <a class="nav-link " href="#">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Dashboard V2
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview ">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./index.html">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Dashboard v1</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="./cjIndex.html">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>CL Dashboard </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./index3.html">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Dashboard v3</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./index3.html">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Dashboard v3</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/widgets.html">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Widgets
+                                <span class="right badge badge-danger">New</span>
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+    <!-- /.sidebar -->
+    </aside>
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+<!--            <div class="card card-body">-->
+
+<!--            </div>-->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+<!--                                <div class="row">-->
+<!--                                    <h3 class="card-title">DataTable with default features</h3>-->
+<!--                                </div>-->
+
+                                    <div class="d-flex justify-content-between">
+                                        <div class="btn-group-sm" id="toolbar" role="group">
+                                            <button class="btn btn-success" onclick="$.operate.addTab()">
+                                                <i class="fa fa-plus"></i> 新增
+                                            </button>
+                                            <button class="btn btn-primary single " onclick="$.operate.editTab()">
+                                                <i class="fa fa-edit"></i> 修改
+                                            </button>
+                                            <button class="btn btn-danger multiple" onclick="$.operate.removeAll()">
+                                                <i class="fa far fa-trash-alt"></i> 删除
+                                            </button>
+                                            <button class="btn btn-info" onclick="$.table.importExcel()">
+                                                <i class="fa fa-upload"></i> 导入
+                                            </button>
+                                            <button style="color: white" class="btn btn-warning" onclick="$.table.exportExcel()">
+                                                <i class="fa fa-download"></i> 导出
+                                            </button>
+                                        </div>
+
+                                            <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                                <i class="fas fa-search mr-1"></i> search
+                                            </button>
+
+                                    </div>
+                                <div class="collapse mt-2" id="collapseExample">
+                                    <div class="card card-body">
+                                        <div class="row" id="cjSearchFirstRow">
+                                            <div class="col-sm-4">
+                                                <div class="form-group row">
+                                                    <label for="cjSearchAccount" class="col-sm-3 col-form-label text-sm">账号：</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control form-control-sm" id="cjSearchAccount" placeholder="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group row">
+                                                    <label for="cjSearchShowname" class="col-sm-3 col-form-label text-sm">显示名：</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control form-control-sm" id="cjSearchShowname" placeholder="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" id="cjSearchSecondRow">
+                                            <div class="col-sm-4">
+                                                <div class="form-group row">
+                                                    <label for="cjSearchTel" class="col-sm-3 col-form-label text-sm">电话号码：</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control form-control-sm" id="cjSearchTel" placeholder="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group row">
+                                                    <label for="cjSearchEmail" class="col-sm-3 col-form-label text-sm">邮箱：</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control form-control-sm" id="cjSearchEmail" placeholder="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <button class="btn btn-success btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</button>
+                                                <button style="color: white" class="btn btn-warning btn-rounded btn-sm ml-2" onclick="$.form.reset()"><i class="fas fa-sync"></i></i>&nbsp;重置</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table cellspacing="0" class="table" id="cjSysUserTable" width="100%">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>ID</th>
+                                        <!--设置标题头部宽度增大(相比于表内的数据行)-->
+                                        <th>账号</th>
+                                        <th>显示名</th>
+                                        <th>电话号码</th>
+                                        <th>邮箱</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark" style="background-color: brown;">
+        111
+        <!-- Control sidebar content goes here -->
+    </aside>
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+        All rights reserved.
+        <div class="float-right d-none d-sm-inline-block">
+            <b>Version</b> 3.0.5
+        </div>
+    </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+<th:block th:replace="~{fragment/fragment :: cjLearning_js}"/>
+</body>
+<script type="application/javascript">
+    /*
+    * 权限控制
+    * */
+    var editFlag = 'cjPermitEdit';
+    var removeFlag = 'cjPermitEdit';
+    var resetPwdFlag = 'cjPermitEdit';
+    var cjSysUserTableInstance;
+
+    function cjInitDataTables() {
+        /*
+        * 初始化article table
+        * */
+        var cjLanguageUrl = "/cjThirdStatic/datatables/cjLanguage.json";
+        /*cjUserTalble初始化*/
+        cjSysUserTableInstance = $('#cjSysUserTable').DataTable({
+            // dom: 'frtip',
+            dom: 'tip',
+            stateSave: true,
+            //"scrollY": "490px",//设置纵向高度
+            //"scrollCollapse": true,//超过设置高度后，折叠
+            // flexibleWidth: false,
+            responsive: false,
+            "bAutoWidth": false, //自定义列宽
+            "pageLength": 5,//设置每页的记录数
+            "language": {
+                "url": cjLanguageUrl
+            },
+            serverSide: true,
+            ajax: {
+                type: "post",
+                url: '/admin/system/user/all',
+                cache: false,  //禁用缓存
+                contentType: "application/json",
+                dataType: "json",
+                data: function (d) {
+                    var cjAjaxparam = {};
+                    cjAjaxparam.draw = d.draw;
+                    cjAjaxparam.limit = d.length;//页面显示记录条数，在页面显示每页显示多少项的时候
+                    cjAjaxparam.start = d.start;//开始的记录序号
+                    cjAjaxparam.page = (d.start / d.length) + 1;//当前页码
+                    //cjAjaxparam.order = data.order[0];
+                    cjAjaxparam.searchValue = d.search.value;
+                    //cjAjaxparam.searchArea = $('#cjDirOptions label.active').find('input').val();
+                    return JSON.stringify(cjAjaxparam);
+                },
+                dataFilter: function (data) {
+                    var resultData = jQuery.parseJSON(data);
+                    console.log(resultData);
+                    var result = resultData.data;
+                    var returnData = {};
+                    returnData.draw = result.draw;//这里直接自行返回了draw计数器,应该由后台返回
+                    returnData.recordsTotal = result.total;//返回数据全部记录
+                    returnData.recordsFiltered = result.total;//后台不实现过滤功能，每次查询均视作全部结果
+                    returnData.data = result.data;//返回的数据列表
+                    console.log("returnData: ", returnData.data);
+
+                    return JSON.stringify(returnData); // return JSON string
+                },
+                // dataSource:function (data) {
+                //    return  data.data;
+                // }
+            },
+            /*添加select插件--单选*/
+            // select: {
+            //     style: 'single'
+            // },
+            /*columns与 columnDefs作用类似，但为了便于查看，使用columns来设置data*/
+            "columns": [
+                {  //行号
+                    //className: "td-no",
+                    orderable: false,
+                    data: null,
+                    render: function (data, type, row, meta) {
+                        var no = meta.settings._iDisplayStart + meta.row + 1;
+                        return no;
+                    }
+                },
+                {data: 'id'},
+                {data: 'username'},
+                {data: 'showname'},
+                {data: 'telephoneNo'},
+                {data: 'email'},
+                {data: 'isEnabled',
+                render:function  (data, type, row, meta) {
+                    if(row.isEnabled){
+                        return '  <input  type="checkbox" name="my-checkbox"  data-bootstrap-switch data-off-color="danger" data-on-color="success" data-size="mini" checked> ';
+                    }
+                    console.log("123  ");
+                    return '  <input type="checkbox" name="my-checkbox"  data-bootstrap-switch data-off-color="danger" data-size="mini" data-on-color="success" >';
+                }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row, meta) {
+                        var actions = [];
+                        actions.push('<button class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="editUser(\'' + row.id + '\')"><i class="fa fa-edit mr-1"></i>编辑</button> ');
+                        actions.push('<button class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="editUser(\'' + row.id + '\')"><i class="fa far fa-trash-alt mr-1"></i>删除</button> ');
+                        var more = [];
+                        more.push("<a class='btn btn-default btn-xs " + resetPwdFlag + "' href='javascript:void(0)' onclick='editUser(" + row.id + ")'><i class='fa fa-key'></i>重置密码</a> ");
+                        more.push("<a class='btn btn-default btn-xs " + editFlag + "' href='javascript:void(0)' onclick='editUser(" + row.id + ")'><i class='fab fa-gg-circle'></i>分配角色</a>");
+                        actions.push('<button  class="btn btn-info btn-xs" role="button" data-container="body" data-placement="left" data-toggle="popover" data-html="true"  data-content="' + more.join('') + '"><i class="fa fa-chevron-circle-right mr-1"></i>更多操作</button>');
+                        return actions.join('');
+                    }
+                },
+            ]
+            ,
+            "columnDefs": [
+
+                /*第二列为员工ID，需要隐藏*/
+                {
+                    "visible": false,
+                    "targets": [1]
+                },
+
+            ],
+            "drawCallback": function (settings) {//dataTables加载完成后
+                console.log('CJ User DataTables has redrawn the table');
+                /*
+                * popover初始化
+                * */
+                $('.table [data-toggle="popover"]').popover();
+
+                /*
+               * bootstrap-switch初始化
+               * */
+                $("input[data-bootstrap-switch]").each(function(){
+                    $(this).bootstrapSwitch('state', $(this).prop('checked'));
+                });
+            }
+        });
+        /*cjUserTalble设置--设置默认排序规则*/
+        // cjSysUserTableInstance.order([4, 'desc']).draw();
+
+
+    };
+
+
+    $(document).ready(function () {
+        /*始化data tables*/
+        cjInitDataTables();
+    });
+</script>
+
+
+</body>
+
+</html>
