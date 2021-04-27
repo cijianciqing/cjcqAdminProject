@@ -26,11 +26,11 @@ public class CJRoleAndResource  extends CJBaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(targetEntity = CJRole.class,cascade = CascadeType.PERSIST)
+    @ManyToOne(targetEntity = CJRole.class)
     @JoinColumn(name = "role_id",referencedColumnName = "id")
     private CJRole cjRole;
 
-    @ManyToOne(targetEntity = CJResource.class,cascade = CascadeType.PERSIST)
+    @ManyToOne(targetEntity = CJResource.class)
     @JoinColumn(name = "resource_id",referencedColumnName = "id")
     private CJResource cjResource;
 

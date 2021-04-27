@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>CJAdmin SysRole </title>
+    <th:block th:replace="~{fragment/fragment :: cjLearning_head}"/>
+
+</head>
+
+<body>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<!-- cjRole--add 模态框 -->
+<div class="modal fade" id="cjRoleAddModal">
+    <div class="modal-dialog">
+        <div class="modal-content bg-success">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Role</h4>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form action="javascript:void(0)" id="cjRoleAddForm">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjRoleAddForm_name">角色名称：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                <i class="fas fa-mars-stroke"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjRoleAddForm_name" name="name"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjRoleAddForm_roleTag">标识：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-tag"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjRoleAddForm_roleTag" name="roleTag"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjRoleAddForm_roleDesc">备注：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                <i class="fas fa-comment-medical"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjRoleAddForm_roleDesc" name="roleDesc"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button class="btn btn-outline-light" data-dismiss="modal" type="button">Close</button>
+                <button class="btn btn-outline-light" id="cjRoleModalAdd_subbtn" type="button">Save changes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="cjRoleUpdateModal">
+    <div class="modal-dialog">
+        <div class="modal-content bg-warning">
+            <div class="modal-header">
+                <h4 class="modal-title">Update Role</h4>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form action="javascript:void(0)" id="cjRoleUpdateForm">
+                    <input class="form-control" id="cjRoleUpdateForm_id" name="id"
+                           type="hidden">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjRoleUpdateForm_name">角色名称：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-mars-stroke"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjRoleUpdateForm_name" name="name"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjRoleUpdateForm_roleTag">标识：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-tag"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjRoleUpdateForm_roleTag" name="roleTag"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjRoleUpdateForm_roleDesc">备注：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                <i class="fas fa-comment-medical"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjRoleUpdateForm_roleDesc" name="roleDesc"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button class="btn btn-outline-light" data-dismiss="modal" type="button">Close</button>
+                <button class="btn btn-outline-light" id="cjRoleModalUpdate_subbtn" type="button">Save changes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="cjResourceModal">
+    <div class="modal-dialog">
+        <div class="modal-content bg-success">
+            <div class="modal-header">
+                <h4 class="modal-title">Resource Distribution</h4>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="cjResourceModalRoleId">
+                <ul id="cjRoleResourceTree" class="ztree" ></ul>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button class="btn btn-outline-light" data-dismiss="modal" type="button">Close</button>
+                <button class="btn btn-outline-light" id="cjResourceModal_subbtn" type="button">Save</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+<div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a class="nav-link" href="index3.html">Home</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+
+        <!-- SEARCH FORM -->
+        <form class="form-inline ml-3">
+            <div class="input-group input-group-sm">
+                <input aria-label="Search" class="form-control form-control-navbar" placeholder="Search" type="search">
+                <div class="input-group-append">
+                    <button class="btn btn-navbar" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <!-- Messages Dropdown Menu -->
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-comments"></i>
+                    <span class="badge badge-danger navbar-badge">3</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <a class="dropdown-item" href="#">
+                        <!-- Message Start -->
+                        <div class="media">
+                            <img alt="user Avatar"
+                                 class="img-size-50 mr-3 img-circle"
+                                 src="node_modules/admin-lte/dist/img/user1-128x128.jpg"
+                                 th:src="@{/node_modules/admin-lte/dist/img/user1-128x128.jpg}">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    Brad Diesel
+                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">Call me whenever you can...</p>
+                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            </div>
+                        </div>
+                        <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <!-- Message Start -->
+                        <div class="media">
+                            <img alt="user Avatar"
+                                 class="img-size-50 img-circle mr-3"
+                                 src="node_modules/admin-lte/dist/img/user8-128x128.jpg"
+                                 th:src="@{/node_modules/admin-lte/dist/img/user8-128x128.jpg}">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    John Pierce
+                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">I got your message bro</p>
+                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            </div>
+                        </div>
+                        <!-- Message End -->
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item dropdown-footer" href="#">See All Messages</a>
+                </div>
+            </li>
+            <!-- Notifications Dropdown Menu -->
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-bell"></i>
+                    <span class="badge badge-warning navbar-badge">15</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-item dropdown-header">15 Notifications</span>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-envelope mr-2"></i> 4 new messages
+                        <span class="float-right text-muted text-sm">3 mins</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-users mr-2"></i> 8 friend requests
+                        <span class="float-right text-muted text-sm">12 hours</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-file mr-2"></i> 3 new reports
+                        <span class="float-right text-muted text-sm">2 days</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item dropdown-footer" href="#">See All Notifications</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-slide="false" data-widget="control-sidebar" href="#" role="button"><i
+                        class="fas fa-th-large"></i></a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /.navbar -->
+
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a class="brand-link" href="index3.html">
+            <img alt="AdminLTE Logo"
+                 class="brand-image img-circle elevation-3" src="node_modules/admin-lte/dist/img/AdminLTELogo.png"
+                 style="opacity: .8"
+                 th:src="@{/node_modules/admin-lte/dist/img/AdminLTELogo.png}">
+            <span class="brand-text font-weight-light">AdminLTE 3</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar Role panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img alt="user Image"
+                         class="img-circle elevation-2" src="node_modules/admin-lte/dist/img/user2-160x160.jpg"
+                         th:src="@{/node_modules/admin-lte/dist/img/user2-160x160.jpg}">
+                </div>
+                <div class="info">
+                    <a class="d-block" href="#">Alexander Pierce</a>
+                </div>
+            </div>
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-accordion="false"
+                    data-widget="treeview"
+                    role="menu">
+                    <!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+                    <li class="nav-item has-treeview menu-open">
+                        <a class="nav-link active" href="#">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                系统管理
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview ">
+                            <li class="nav-item">
+                                <a class="nav-link " href="/templates/system/user.html"
+                                   th:href="@{/admin/system/user}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>用户管理</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/templates/system/role.html"
+                                   th:href="@{/admin/system/role}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>角色管理</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="/templates/system/resource.html"
+                                   th:href="@{/admin/system/resource}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>资源管理</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./index3.html">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Dashboard v3</p>
+                                </a>
+                            </li>
+                            <li class="nav-item has-treeview ">
+                                <a class="nav-link " href="#">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Dashboard V2
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview ">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./index.html">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Dashboard v1</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="./cjIndex.html">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>CL Dashboard </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./index3.html">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Dashboard v3</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview menu-open">
+                        <a class="nav-link active" href="#">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                左侧导航栏第一级
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview ">
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/templates/system/Role.html"
+                                   th:href="@{/admin/system/Role}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>左侧导航栏第二级00</p>
+                                </a>
+                            </li>
+                            <li class="nav-item has-treeview ">
+                                <a class="nav-link " href="#">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        左侧导航栏第二级
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview ">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./index.html">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>左侧导航栏第三级</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="./cjIndex.html">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>左侧导航栏第三级</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/widgets.html">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Widgets
+                                <span class="right badge badge-danger">New</span>
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+    <!-- /.sidebar -->
+    </aside>
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <!--            <div class="card card-body">-->
+
+            <!--            </div>-->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex justify-content-between">
+                                    <div class="btn-group-sm" id="toolbar" role="group">
+                                        <button class="btn btn-success" onclick="cjAddRole()" type="button">
+                                            <i class="fa fa-plus"></i> 新增
+                                        </button>
+
+                                        <button class="btn btn-danger multiple" onclick="$.operate.removeAll()">
+                                            <i class="fa far fa-trash-alt"></i> 删除
+                                        </button>
+                                    </div>
+
+                                    <button aria-controls="collapseExample" aria-expanded="false"
+                                            class="btn btn-sm btn-primary"
+                                            data-target="#collapseExample" data-toggle="collapse"
+                                            type="button">
+                                        <i class="fas fa-search mr-1"></i> search
+                                    </button>
+
+                                </div>
+                                <div class="collapse mt-2" id="collapseExample">
+                                    <div class="card card-body">
+                                        <form action="javascript:void(0)" id="cjRoleDataTableForm">
+
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label text-sm"
+                                                               for="cjSearchName">角色名称：</label>
+                                                        <div class="col-sm-9">
+                                                            <input class="form-control form-control-sm" id="cjSearchName"
+                                                                   placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label text-sm"
+                                                               for="cjSearchRoleTag">角色标识：</label>
+                                                        <div class="col-sm-9">
+                                                            <input class="form-control form-control-sm"
+                                                                   id="cjSearchRoleTag"
+                                                                   placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <button class="btn btn-success btn-rounded btn-sm"
+                                                            onclick="cjRoleTableSearch()"><i class="fa fa-search"></i>&nbsp;搜索
+                                                    </button>
+                                                    <button class="btn btn-warning btn-rounded btn-sm ml-2"
+                                                            onclick="cjRoleTableSearchReset()"
+                                                            style="color: white"><i
+                                                            class="fas fa-sync"></i>&nbsp;重置
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table cellspacing="0" class="table table-striped" id="cjSysRoleTable" width="100%">
+                                    <thead class=" text-sm">
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>ID</th>
+                                        <!--设置标题头部宽度增大(相比于表内的数据行)-->
+                                        <th>角色名称</th>
+                                        <th>角色标识</th>
+                                        <th>角色描述</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+        All rights reserved.
+        <div class="float-right d-none d-sm-inline-block">
+            <b>Version</b> 3.0.5
+        </div>
+    </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+<th:block th:replace="~{fragment/fragment :: cjLearning_js}"/>
+</body>
+<script type="application/javascript">
+    /*
+    * 权限控制
+    * */
+    var editFlag = 'cjPermitEdit';
+    var removeFlag = 'cjPermitEdit';
+    var resetPwdFlag = 'cjPermitEdit';
+
+
+
+/*
+* S1 START. role--dataTables的所有设置及其CRUD操作-----------------------------------------------------------------------
+* */
+    /*
+    * S1-1 START. role--dataTables的所有全局配置-----------------------------------------------------------------------
+    * */
+    //role dataTables 全局实例
+    var cjSysRoleTableInstance;
+    //cjcq  统一错误处理
+    var cjUniversalExceptionMessage
+
+    /*
+  * role.html页面， 搜索表单，点击搜索
+  * */
+    function cjRoleTableSearch() {
+        cjSysRoleTableInstance.ajax.reload();
+    }
+
+    /*
+    * 清空Role 搜索表单内的全部内容
+    * */
+    function cjRoleTableSearchReset() {
+        $("#cjRoleDataTableForm").cjFormReset();
+
+    }
+
+    /*
+    *role dataTables初始化操作
+    * */
+    function cjInitDataTables() {
+        /*
+        * 初始化article table
+        * */
+        var cjLanguageUrl = "/cjThirdStatic/datatables/cjLanguage.json";
+        /*cjRoleTalble初始化*/
+        cjSysRoleTableInstance = $('#cjSysRoleTable').DataTable({
+            // dom: 'frtip',
+            dom: 'tip',
+            stateSave: true,
+            //"scrollY": "490px",//设置纵向高度
+            //"scrollCollapse": true,//超过设置高度后，折叠
+            // flexibleWidth: false,
+            responsive: false,
+            "bAutoWidth": false, //自定义列宽
+            "pageLength": 5,//设置每页的记录数
+            "language": {
+                "url": cjLanguageUrl
+            },
+            serverSide: true,
+            ajax: {
+                type: "post",
+                url: '/admin/system/role/all',
+                cache: false,  //禁用缓存
+                contentType: "application/json",
+                dataType: "json",
+                data: function (d) {//设置请求参数
+                    var cjAjaxparam = {};
+                    cjAjaxparam.draw = d.draw;
+                    cjAjaxparam.limit = d.length;//页面显示记录条数，在页面显示每页显示多少项的时候
+                    cjAjaxparam.start = d.start;//开始的记录序号
+                    cjAjaxparam.page = (d.start / d.length) + 1;//当前页码
+                    //cjAjaxparam.order = data.order[0];
+                    //cjAjaxparam.searchValue = d.search.value;
+                    cjAjaxparam.name = $("#cjSearchName").val();
+                    cjAjaxparam.roleTag = $("#cjSearchRoleTag").val();
+                    return JSON.stringify(cjAjaxparam);
+                },
+                dataFilter: function (data) {//返回数据过滤
+                    var resultData = jQuery.parseJSON(data);
+                    var result = resultData.data;
+                    var returnData = {};
+                    returnData.draw = result.draw;//这里直接自行返回了draw计数器,应该由后台返回
+                    returnData.recordsTotal = result.total;//返回数据全部记录
+                    returnData.recordsFiltered = result.total;//后台不实现过滤功能，每次查询均视作全部结果
+                    returnData.data = result.data;//返回的数据列表
+                    return JSON.stringify(returnData); // return JSON string
+                },
+            },
+            "columns": [
+                {  //行号
+                    //className: "td-no",
+                    orderable: false,
+                    data: null,
+                    render: function (data, type, row, meta) {
+                        var no = meta.settings._iDisplayStart + meta.row + 1;
+                        return no;
+                    }
+                },
+                {data: 'id'},
+                {data: 'name'},
+                {data: 'roleTag'},
+                {data: 'roleDesc'},
+                {
+                    data: null,
+                    render: function (data, type, row, meta) {
+                        var actions = [];
+                        actions.push('<button style="color: white" class="btn btn-warning btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="cjEditRole(\'' + row.id + '\')"><i class="fa fa-edit mr-1"></i>编辑</button> ');
+                        actions.push('<button class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="cjRemoveRole(\'' + row.id + '\')"><i class="fa far fa-trash-alt mr-1"></i>删除</button> ');
+                        // var more = [];
+                        // more.push("<a class='btn btn-default btn-xs'  id='abc' href='javascript:void(0)' onclick='cjResourceAllocation(" + row.id + ")'><i class='fa fa-key'></i>资源分配</a> ");
+                        // more.push("<a class='btn btn-default btn-xs'  href='javascript:void(0)' onclick='editRole(" + row.id + ")'><i class='fab fa-gg-circle'></i>分配用户</a>");
+                        actions.push('<a  tabindex="0" cjRoleId="'+ row.id+'" class="btn btn-info btn-xs text-white" role="button"  data-toggle="popover"  ><i class="fa fa-chevron-circle-right mr-1"></i>更多操作</a>');
+                        return actions.join('');
+                    }
+                },
+            ]
+            ,
+            "columnDefs": [
+
+                /*第二列为员工ID，需要隐藏*/
+                {
+                    "visible": false,
+                    "targets": [1]
+                },
+                {
+                    "orderable": false,
+                    //去掉排序
+                    "targets": [1, 2, 3, 4, 5]
+                },
+
+            ],
+            "drawCallback": function (settings) {//dataTables加载完成后
+
+
+            }
+        }).on( 'draw', function () {// fired once the table has completed a draw.
+            /*
+               * popover初始化
+               * */
+            $('[data-toggle="popover"]').on('show.bs.popover', function () {
+                //console.log(this);
+            }).popover({
+                delay: { "show": 500, "hide": 1000 },//单位为ms
+                template:'<div class="popover" role="tooltip"><div class="arrow"></div><h5 class="popover-header"></h5><div class="popover-body"></div></div>',
+                content: cjGetPopoverContent,
+                trigger: 'hover',
+                // title: "cjPTitle",
+                placement:'left',
+                html: true
+
+            })
+            /*
+             * bootstrap-switch初始化
+             * */
+            $("input[data-bootstrap-switch]").each(function () {
+                $(this).bootstrapSwitch('state', $(this).prop('checked'));
+            });
+
+        } );
+    }
+
+    /*
+    * bootstrap--popover初始化设置的一部分：返回popover的内容
+    * */
+    function cjGetPopoverContent(){
+        let cjRoleId = $(this).attr("cjRoleId");
+        var more = [];
+        more.push("<a class='btn btn-default btn-xs cjRoleResourceAllocateBtn'  id=cjRole" + cjRoleId + " href='javascript:void(0)'><i class='fa fa-key'></i>资源分配</a> ");
+        more.push("<a class='btn btn-default btn-xs'  href='javascript:void(0)' onclick='editRole(" + cjRoleId + ")'><i class='fab fa-gg-circle'></i>分配用户</a>");
+        return more.join('');
+    }
+
+
+    $(document).ready(function () {
+        /*始化data tables*/
+        cjInitDataTables();
+    });
+    /*
+    * S1-1 END. role--dataTables的所有全局配置-----------------------------------------------------------------------
+    * */
+
+
+
+
+    /*
+     * S1-2 START. role--dataTables的CRUD配置-----------------------------------------------------------------------
+     * */
+        /*
+        * S1-2-1 START. role--CREATE
+        * */
+            /*
+            * 添加用户--打开模态框
+            * */
+    function cjAddRole(userId) {
+        $("#cjRoleAddModal").on('show.bs.modal', function (e) {
+        //    do nothing
+        }).on('hidden.bs.modal', function (e) {
+            $("#cjRoleAddForm").cjFormReset();
+        }).modal('show');
+    }
+
+
+    /*
+    * 添加角色--提交
+    * */
+    $("#cjRoleModalAdd_subbtn").on("click", function () {
+
+        var cjRoleAddFormData = $("#cjRoleAddForm").cjFormSerializeObject();
+        $.ajax({
+            url: "/admin/system/role",
+            method: "post",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(cjRoleAddFormData),
+            success: function (data) {
+                if (data.error) {
+                    cjUniversalExceptionMessage = data.cjExceptionHandlerMessage;
+                    //console.log("cjcq统一错误处理报错--cj Role add ： ", cjUniversalExceptionMessage);
+                    if (cjUniversalExceptionMessage.cjMessage.msg == "cjValidateMessage") {
+                        let cjStringError = $.cjValidateErrorToString(cjUniversalExceptionMessage.cjMessage.data);
+                        bootbox.alert("cj add Role " + " 失败 : " + cjStringError + ",请联系管理员!");
+                    }
+                } else {
+                    bootbox.alert("cj Role 添加成功!");
+                    $("#cjRoleAddModal").modal('hide');
+                    cjSysRoleTableInstance.ajax.reload(null, false);//cj Role dataTables reload时，保证页面不变
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                bootbox.alert("cj create Role 失败,请联系管理员!");
+            }
+
+        });
+    });
+            /*
+           * S1-2-1 END. role--CREATE
+           * */
+
+
+             /*
+            * S1-2-2 START. role--UPDATE
+            * */
+
+    /*
+    * 更新角色--打开模态框
+    * */
+    function cjEditRole(RoleId) {
+        /*
+        * 1.获取Role
+        * 2.清空-->设置form
+        * 3.显示modal
+        * */
+        $.ajax({//更新
+            url: "/admin/system/role/" + RoleId,
+            method: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data) {
+                var cjEditRole = data.data;
+                $("#cjRoleUpdateForm").cjSetFormByJsonObject(cjEditRole);
+                $("#cjRoleUpdateModal").on('show.bs.modal', function (e) {
+                //    do nothing
+                }).on('hidden.bs.modal', function (e) {
+                    $("#cjRoleUpdateForm").cjFormReset();
+                }).modal('show');
+
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                bootbox.alert("cj Upate--Get Role获取失败,请联系管理员!");
+            }
+        });
+
+    }
+
+    /*
+  * 更新用户--提交
+  * */
+    $("#cjRoleModalUpdate_subbtn").on("click", function () {
+
+        var cjRoleUpdateFormData = $("#cjRoleUpdateForm").cjFormSerializeObject();
+        $.ajax({
+            url: "/admin/system/role",
+            method: "put",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(cjRoleUpdateFormData),
+            success: function (data) {
+                if (data.error) {
+                    cjUniversalExceptionMessage = data.cjExceptionHandlerMessage;
+                    //console.log("cjcq统一错误处理报错--cj Role update ： ", cjUniversalExceptionMessage);
+                    if (cjUniversalExceptionMessage.cjMessage.msg == "cjValidateMessage") {
+                        let cjStringError = $.cjValidateErrorToString(cjUniversalExceptionMessage.cjMessage.data);
+                        bootbox.alert("cj update Role " + " 失败 : " + cjStringError + ",请联系管理员!");
+                    }
+                } else {
+                    bootbox.alert("cj Role Update 成功!");
+                    $("#cjRoleUpdateModal").modal('hide');
+                    cjSysRoleTableInstance.ajax.reload(null, false);//cj Role dataTables reload时，保证页面不变
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                bootbox.alert("cj Update Role 失败,请联系管理员!");
+            }
+
+        });
+    });
+
+            /*
+           * S1-2-2 END. role--UPDATE
+           * */
+
+
+            /*
+             * S1-2-3 START. role--DELETE
+             * */
+    /*
+       * 删除用户
+       * */
+    function cjRemoveRole(RoleId) {
+        bootbox.confirm("确定删除？",
+            function(result){
+            if(result){
+                $.ajax({//更新
+                    url: "/admin/system/role/" + RoleId,
+                    method: "delete",
+                    dataType: "json",
+                    contentType: "application/json",
+                    //data: JSON.stringify(cjUpdateData),
+                    success: function () {
+                        bootbox.alert("cj delete Role 成功！");
+                        cjSysRoleTableInstance.ajax.reload(null, false);//cj Role dataTables reload时，保证页面不变
+
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        bootbox.alert("cj delet Role 失败,请联系管理员!");
+                    }
+                });
+            }
+        });
+    }
+            /*
+             * S1-2-3 END. role--DELETE
+             * */
+
+
+    /*
+     * S1-2 END. role--dataTables的CRUD配置-----------------------------------------------------------------------
+     * */
+
+
+    /*
+    * S1-3 START. role--resource Allocate 操作-----------------------------------------------------------------------
+    * */
+
+    /*
+    *role对应的resource模态框中， ztree的setting
+    * */
+    var setting = {
+        check: {
+            enable: true,
+            chkboxType: {"Y":"", "N":""}//节点前checkbox打勾是，对于父子节点的影响，而在此例中，不设置父子关联
+        },
+        view: {
+            dblClickExpand: false
+        },
+        data: {
+            key: {
+                name: "name",//节点显示名称
+                title: "",//鼠标悬浮在节点时，提示内容
+                //zTree 节点数据保存节点链接的目标 URL 的属性名称。默认值为node的属性："url"
+                //设置为空，则点击时无反应
+                url: "",
+                isParent: "isParent"//节点是否为父节点
+            },
+            simpleData: {
+                enable: true,//采用simpleData
+                idKey: "id",
+                pIdKey: "pid",
+                rootPId: 1//设置rootPid
+            }
+        }
+    };
+
+
+    /*
+    *  打开role的资源分配modal
+    * step:
+    * 1.获取角色对应的资源，所有的资源+已有的资源
+    * 2.成功获取后打开模态框
+    * 3.打开模态框时，初始化 resource ztree，打开所有节点
+    * */
+    $(document).on("click", "a.cjRoleResourceAllocateBtn" , function() { //这里通过指定资源ID
+        let cjRoleId = $(this).attr("id").substring(6);
+        $.ajax({
+            url: "/admin/system/resource/role/"+cjRoleId,
+            method: "get",
+            //dataType: "json",
+            contentType: "application/json",
+            success: function (result) {
+                $("#cjResourceModal").on('show.bs.modal', function (e) {
+                    let zNodes = result.data;
+                    $("#cjResourceModalRoleId").val(cjRoleId);
+                    //初始化ztree
+                    cjzTreeObj = $.fn.zTree.init($("#cjRoleResourceTree"), setting, zNodes);
+                    cjzTreeObj.expandAll(true);//全部展开
+                }).on('hidden.bs.modal', function (e) {
+                    cjzTreeObj.destroy();
+                }).modal('show');
+
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                bootbox.alert("cj Upate--Get Role获取失败,请联系管理员!");
+            }
+        });
+    });
+
+    /*
+    * 资源分配modal提交
+    * */
+    $(document).on("click", "#cjResourceModal_subbtn" , function() {
+        let cjSelectResourceNodes = cjzTreeObj.getCheckedNodes(true);
+        let cjSelectResourceArray=[];
+        $.each(cjSelectResourceNodes,function (index,item) {
+            cjSelectResourceArray.push(item.id);
+        })
+        $.ajax({
+            url: "/admin/system/resource/role/"+ $("#cjResourceModalRoleId").val(),
+            method: "post",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(cjSelectResourceArray),
+            success: function (result) {
+                bootbox.alert("角色权限分配成功！");
+                $("#cjResourceModalRoleId").val("");
+                $("#cjResourceModal").modal('hide');
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                bootbox.alert("cj role -- resourceAllocate 失败,请联系管理员!");
+            }
+        });
+    })
+    /*
+   * S1-3 END. role--resource Allocate 操作-----------------------------------------------------------------------
+   * */
+
+/*
+* S1 START. role--dataTables的所有设置及其CRUD操作-----------------------------------------------------------------------
+* */
+</script>
+
+
+</body>
+
+</html>

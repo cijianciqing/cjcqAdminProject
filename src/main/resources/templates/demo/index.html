@@ -1,0 +1,74 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>
+	南山业务流程管理系统
+</title>
+
+	<script th:src="@{/cjStatic/demo/js/jquery-3.2.1.min.js}" src="cjStatic/demo/js/jquery-3.2.1.min.js"></script>
+	<script th:src="@{/cjStatic/demo/js/jquery.browser.min.js}" src="cjStatic/demo/js/jquery.browser.min.js"></script>
+	<script th:src="@{/cjStatic/demo/js/jquery.cookie.js}" src="cjStatic/demo/js/jquery.cookie.js"></script>
+	<script th:src="@{/cjStatic/demo/js/jquery.fancybox.min.js}" src="cjStatic/demo/js/jquery.fancybox.min.js"></script>
+	<script th:src="@{/cjStatic/demo/js/jsencrypt.min.js}" src="cjStatic/demo/js/jsencrypt.min.js"></script>
+
+
+
+    <script type="text/javascript">
+        function htmlDecode(value) {
+            if (value) {
+                return $('<div />').html(value).text();
+            } else {
+                return '';
+            }
+        }
+
+        application = {
+            root: '/',
+            returnUrl: htmlDecode('/'),
+            logoutType: '',
+            ntOnly: false,
+            strings: {
+                enterAccount: '\u8BF7\u8F93\u5165\u60A8\u7684\u8D26\u53F7',
+                browserWarn: '\u5F88\u62B1\u6B49! \u672C\u7CFB\u7EDF\u9700\u8981 <strong> Internet Explorer 10+\u3001FireFox\u3001Safari\u3001Chrome(\u63A8\u8350)</strong> \u53CA\u66F4\u9AD8\u7248\u672C\u7684\u6D4F\u89C8\u5668\u624D\u80FD\u4F7F\u7528, \u60A8\u5F53\u524D\u4F7F\u7528\u7684\u662F <strong id=\"spnBrowserName\">{0} \u7248\u672C\uFF1A{1}</strong>, \u60A8\u9700\u8981\u5347\u7EA7\u60A8\u7684\u6D4F\u89C8\u5668, \u5426\u5219\u5C06\u65E0\u6CD5\u4F7F\u7528\u672C\u7CFB\u7EDF\u7684\u6240\u6709\u529F\u80FD.'
+            }
+        }
+    </script>
+    <script th:src="@{/cjStatic/demo/js/login.js}" src="cjStatic/demo/js/login.js"></script>
+</head>
+<body>
+<div class="container-fluid d-flex flex-column h-100 yz-outter-wrap">
+    <div class="d-flex flex-row align-items-end yz-banner">
+        <div class="yz-logo"></div>
+        <div class="flex-fill"></div>
+        <div class="yz-langs">
+            <span class="lang-item selected" lcid="2052">简体中文</span><span class="lang-sp">|</span><span class="lang-item " lcid="1028">繁體中文</span><span class="lang-sp">|</span><span class="lang-item " lcid="1033">English</span>
+        </div>
+    </div>
+    <div class="row flex-fill yz-body">
+        <div class="col-12 d-flex flex-column p-0 yz-right-warp">
+            <div class="flex-fill d-flex flex-row justify-content-center align-items-center yz-right-top-wrap">
+                <div id="_pnlLogin" class="d-flex flex-column align-items-stretch yz-login-body">
+                    <div class="head"></div>
+                    <div class="tip">&nbsp;</div>
+                    <div class="yz-input uid">
+                        <input name="_txtUid" type="text" id="_txtUid" autocomplete="off" placeholder="账号" />
+                    </div>
+                    <div class="yz-input pwd">
+                        <input name="_txtPwd" type="password" id="_txtPwd" autocomplete="new-password" placeholder="密码" />
+                    </div>
+                    <div id="_btnLogin" class="text-center yz-btn login">登 录</div>
+
+                </div>
+            </div>
+            <div class="text-center yz-copyright">
+                <div id="_copyright">浏览器请使用IE10.0及以上、Chrome（推荐）、Fixfox、Safari等主流浏览器</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

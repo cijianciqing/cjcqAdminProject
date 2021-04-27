@@ -28,6 +28,11 @@ public class CJRole  extends CJBaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    /*
+    * 英文标识，需要备注必填，且必须为英文+特殊符号+数字。。。
+    * */
+    private String roleTag;
+    private String roleDesc;
 
     @OneToMany(mappedBy = "cjRole",cascade = CascadeType.REMOVE)
     private Set<CJUserAndRole> cjUserAndRoles;
@@ -36,4 +41,13 @@ public class CJRole  extends CJBaseEntity implements Serializable {
     private Set<CJRoleAndResource> cjRoleAndResources;
 
 
+    @Override
+    public String toString() {
+        return "CJRole{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", roleTag='" + roleTag + '\'' +
+                ", roleDesc='" + roleDesc + '\'' +
+                '}';
+    }
 }

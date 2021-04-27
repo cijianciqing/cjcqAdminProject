@@ -8,6 +8,7 @@ package com.ns.cjcq.security.domain;
  *
  */
 public enum CJResourceType {
+	DIR("directory"),
 	
 	MENU("menu"),
 	

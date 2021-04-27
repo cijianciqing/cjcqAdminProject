@@ -1,4 +1,4 @@
-package com.ns.cjcq.security.dto;
+package com.ns.cjcq.security.dvo;
 
 
 import lombok.*;
@@ -22,5 +22,5 @@ public class CJViewUser {
     @Email(message = "邮箱格式不正确")
     private String email;
     //表示账户是否被禁用
-    private Boolean isEnabled;
+    private Boolean isEnabled=true;
 }

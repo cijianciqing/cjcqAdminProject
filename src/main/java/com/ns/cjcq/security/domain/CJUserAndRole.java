@@ -1,10 +1,7 @@
 package com.ns.cjcq.security.domain;
 
 import com.ns.cjcq.common.entity.CJBaseEntity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -22,17 +19,23 @@ import java.io.Serializable;
 @Where(clause = "cjuniversal_del_status = 0")
 @Entity
 @Table(name="cj_auth_user_and_role")
+@ToString
 public class CJUserAndRole  extends CJBaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(targetEntity = CJUser.class,cascade = CascadeType.PERSIST)
+    @ManyToOne(targetEntity = CJUser.class)
     @JoinColumn(name = "user_id",referencedColumnName = "id")
     private CJUser cjUser;
 
-    @ManyToOne(targetEntity = CJRole.class,cascade = CascadeType.PERSIST)
+    @ManyToOne(targetEntity = CJRole.class)
     @JoinColumn(name = "role_id",referencedColumnName = "id")
     private CJRole cjRole;
+
+    public CJUserAndRole(CJUser user, CJRole role) {
+        this.cjUser = user;
+        this.cjRole = role;
+    }
 
 }

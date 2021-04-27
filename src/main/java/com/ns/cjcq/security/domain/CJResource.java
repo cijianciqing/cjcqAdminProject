@@ -30,6 +30,9 @@ public class CJResource  extends CJBaseEntity implements Serializable {
     private Long id;
     private String name;
     private String url;
+    private String resDesc;
+
+    private String fontIcon;
     /**
      * 资源类型
      */
@@ -49,14 +52,22 @@ public class CJResource  extends CJBaseEntity implements Serializable {
     /**
      * 子资源
      */
-    @OneToMany(mappedBy = "parent")
+    @OneToMany(mappedBy = "parent",cascade = {CascadeType.REMOVE})
     @OrderBy("sort ASC")
     private List<CJResource> childs = new ArrayList<>();
-
 
     @OneToMany(mappedBy = "cjResource",cascade = CascadeType.REMOVE)
     private Set<CJRoleAndResource> cjRoleAndResources;
 
-
-
+    @Override
+    public String toString() {
+        return "CJResource{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                ", resDesc='" + resDesc + '\'' +
+                ", fontIcon='" + fontIcon + '\'' +
+                ", sort=" + sort +
+                '}';
+    }
 }

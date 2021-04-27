@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>CJAdmin SysResource </title>
+    <th:block th:replace="~{fragment/fragment :: cjLearning_head}"/>
+    <style type="text/css">
+        /*<ul id="cjSysResourceTree" class="ztree"></ul>*/
+        #cjSysResourceTree{
+            background-color: rgba(158, 234, 155, 0.7);
+        }
+        #cjSysResourceTree li i {
+            margin-right: 5px;
+        }
+        #cjSysResourceTree li  {
+            margin-top: 5px;
+        }
+        #cjSysResourceTree li  a.cjzTreeNodeCss {
+            /*color: #007BFF !important;*/
+            text-decoration-line: none;
+            font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+            font-size: medium;
+        }
+    </style>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<div class="modal fade" id="cjResourceShowModal">
+    <div class="modal-dialog">
+        <div class="modal-content bg-info">
+            <div class="modal-header">
+                <h4 class="modal-title">Show Resource</h4>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form action="javascript:void(0)" id="cjResourceShowForm">
+
+                    <input class="form-control" id="cjResourceShowForm_ParentId" name="parentId"
+                           type="hidden">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjResourceAddForm_name">名称：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-globe-americas"></i>
+                                </span>
+                                </div>
+                                <input disabled class="form-control form-control-sm" id="cjResourceShowForm_name"
+                                       name="name"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjResourceShowForm_resDesc">描述：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-map-marked-alt"></i>
+                                </span>
+                                </div>
+                                <input disabled class="form-control form-control-sm" id="cjResourceShowForm_resDesc"
+                                       name="resDesc"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjResourceShowForm_url">URL：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-map-marker-alt"></i>
+                                </span>
+                                </div>
+                                <input disabled class="form-control form-control-sm" id="cjResourceShowForm_url"
+                                       name="url"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjResourceAddForm_fontIcon">对应的图标：</label>
+
+                        <div class="col-sm-9">
+                            <div class="btn-group">
+                                <button id="cjResourceShowForm_showIcon" type="button"
+                                        class="btn btn-info border-white iconpicker-component"><i
+                                        class="fas fa-anchor"></i></button>
+                                <button disabled type="button" id="cjResourceShowForm_fontIcon" name="fontIcon"
+                                        class="icp icp-dd btn btn-info  border-white dropdown-toggle"
+                                        data-selected="fa-car" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                    fas fa-anchor
+                                </button>
+                                <div class="dropdown-menu"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button class="btn btn-outline-light" data-dismiss="modal" type="button">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="cjResourceAddModal">
+    <div class="modal-dialog">
+        <div class="modal-content bg-success">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Resource</h4>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form action="javascript:void(0)" id="cjResourceAddForm">
+
+                    <input class="form-control" id="cjResourceAddForm_ParentId" name="parentId"
+                           type="hidden">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjResourceAddForm_name">名称：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-globe-americas"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjResourceAddForm_name" name="name"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjResourceAddForm_resDesc">描述：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-map-marked-alt"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjResourceAddForm_resDesc"
+                                       name="resDesc"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjResourceAddForm_url">URL：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-map-marker-alt"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjResourceAddForm_url" name="url"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjResourceAddForm_fontIcon">对应的图标：</label>
+
+                        <div class="col-sm-9">
+                            <div class="btn-group">
+                                <button id="cjResourceAddForm_showIcon" type="button"
+                                        class="btn btn-success border-white iconpicker-component"><i
+                                        class="fas fa-anchor"></i></button>
+                                <button type="button" id="cjResourceAddForm_fontIcon"
+                                        class="icp icp-dd btn btn-success  border-white dropdown-toggle"
+                                        data-selected="fa-car" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                    fas fa-anchor
+                                </button>
+                                <div class="dropdown-menu"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button class="btn btn-outline-light" data-dismiss="modal" type="button">Close</button>
+                <button class="btn btn-outline-light" id="cjResourceModalAdd_subbtn" type="button">Save changes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="cjResourceUpdateModal">
+    <div class="modal-dialog">
+        <div class="modal-content bg-warning">
+            <div class="modal-header">
+                <h4 class="modal-title">Update Resource</h4>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form action="javascript:void(0)" id="cjResourceUpdateForm">
+
+                    <input class="form-control" id="cjResourceUpdateForm_ParentId" name="parentId"
+                           type="hidden">
+                    <input class="form-control" id="cjResourceUpdateForm_id" name="id"
+                           type="hidden">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjResourceUpdateForm_name">名称：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-globe-americas"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjResourceUpdateForm_name" name="name"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjResourceUpdateForm_resDesc">描述：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-map-marked-alt"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjResourceUpdateForm_resDesc"
+                                       name="resDesc"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjResourceUpdateForm_url">URL：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-map-marker-alt"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjResourceUpdateForm_url" name="url"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjResourceUpdateForm_fontIcon">对应的图标：</label>
+
+                        <div class="col-sm-9">
+                            <div class="btn-group">
+                                <button id="cjResourceUpdateForm_showIcon" type="button"
+                                        class="btn btn-warning border-white iconpicker-component"><i
+                                        class="fas fa-anchor"></i></button>
+                                <button type="button" id="cjResourceUpdateForm_fontIcon"
+                                        class="icp icp-dd btn btn-warning  border-white dropdown-toggle"
+                                        data-selected="fa-car" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                    fas fa-anchor
+                                </button>
+                                <div class="dropdown-menu"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button class="btn btn-outline-light" data-dismiss="modal" type="button">Close</button>
+                <button class="btn btn-outline-light" id="cjResourceModalUpdate_subbtn" type="button">Save changes
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a class="nav-link" href="index3.html">Home</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+
+        <!-- SEARCH FORM -->
+        <form class="form-inline ml-3">
+            <div class="input-group input-group-sm">
+                <input aria-label="Search" class="form-control form-control-navbar" placeholder="Search" type="search">
+                <div class="input-group-append">
+                    <button class="btn btn-navbar" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <!-- Messages Dropdown Menu -->
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-comments"></i>
+                    <span class="badge badge-danger navbar-badge">3</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <a class="dropdown-item" href="#">
+                        <!-- Message Start -->
+                        <div class="media">
+                            <img alt="User Avatar"
+                                 class="img-size-50 mr-3 img-circle"
+                                 src="node_modules/admin-lte/dist/img/user1-128x128.jpg"
+                                 th:src="@{/node_modules/admin-lte/dist/img/user1-128x128.jpg}">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    Brad Diesel
+                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">Call me whenever you can...</p>
+                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            </div>
+                        </div>
+                        <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <!-- Message Start -->
+                        <div class="media">
+                            <img alt="User Avatar"
+                                 class="img-size-50 img-circle mr-3"
+                                 src="node_modules/admin-lte/dist/img/user8-128x128.jpg"
+                                 th:src="@{/node_modules/admin-lte/dist/img/user8-128x128.jpg}">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    John Pierce
+                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">I got your message bro</p>
+                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            </div>
+                        </div>
+                        <!-- Message End -->
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item dropdown-footer" href="#">See All Messages</a>
+                </div>
+            </li>
+            <!-- Notifications Dropdown Menu -->
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-bell"></i>
+                    <span class="badge badge-warning navbar-badge">15</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-item dropdown-header">15 Notifications</span>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-envelope mr-2"></i> 4 new messages
+                        <span class="float-right text-muted text-sm">3 mins</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-users mr-2"></i> 8 friend requests
+                        <span class="float-right text-muted text-sm">12 hours</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-file mr-2"></i> 3 new reports
+                        <span class="float-right text-muted text-sm">2 days</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item dropdown-footer" href="#">See All Notifications</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-slide="false" data-widget="control-sidebar" href="#" role="button"><i
+                        class="fas fa-th-large"></i></a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /.navbar -->
+
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a class="brand-link" href="index3.html">
+            <img alt="AdminLTE Logo"
+                 class="brand-image img-circle elevation-3" src="node_modules/admin-lte/dist/img/AdminLTELogo.png"
+                 style="opacity: .8"
+                 th:src="@{/node_modules/admin-lte/dist/img/AdminLTELogo.png}">
+            <span class="brand-text font-weight-light">AdminLTE 3</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img alt="User Image"
+                         class="img-circle elevation-2" src="node_modules/admin-lte/dist/img/user2-160x160.jpg"
+                         th:src="@{/node_modules/admin-lte/dist/img/user2-160x160.jpg}">
+                </div>
+                <div class="info">
+                    <a class="d-block" href="#">Alexander Pierce</a>
+                </div>
+            </div>
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-accordion="false"
+                    data-widget="treeview"
+                    role="menu">
+                    <!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+                    <li class="nav-item has-treeview menu-open">
+                        <a class="nav-link active" href="#">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                系统管理
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview ">
+                            <li class="nav-item">
+                                <a class="nav-link " href="/templates/system/user.html"
+                                   th:href="@{/admin/system/user}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>用户管理</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="/templates/system/role.html"
+                                   th:href="@{/admin/system/role}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>角色管理</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/templates/system/role.html"
+                                   th:href="@{/admin/system/resource}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>资源管理</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./index3.html">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Dashboard v3</p>
+                                </a>
+                            </li>
+                            <li class="nav-item has-treeview ">
+                                <a class="nav-link " href="#">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Dashboard V2
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview ">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./index.html">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Dashboard v1</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="./cjIndex.html">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>CL Dashboard </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./index3.html">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Dashboard v3</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview menu-open">
+                        <a class="nav-link active" href="#">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                左侧导航栏第一级
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview ">
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/templates/system/user.html"
+                                   th:href="@{/admin/system/user}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>左侧导航栏第二级00</p>
+                                </a>
+                            </li>
+                            <li class="nav-item has-treeview ">
+                                <a class="nav-link " href="#">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        左侧导航栏第二级
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview ">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./index.html">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>左侧导航栏第三级</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="./cjIndex.html">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>左侧导航栏第三级</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/widgets.html">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Widgets
+                                <span class="right badge badge-danger">New</span>
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <!--            <div class="card card-body">-->
+
+            <!--            </div>-->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between">
+                                <div class="btn-group-sm" id="toolbar" role="group">
+                                    <!--data-target="#cjUserAddModal"-->
+                                    <button class="btn btn-success" onclick="cjAddResource()"
+                                            type="button">
+                                        <i class="fa fa-plus"></i> 新增
+                                    </button>
+                                    <button class="btn btn-primary single " onclick="cjUpdateResource()">
+                                        <i class="fa fa-edit"></i> 修改
+                                    </button>
+                                    <button class="btn btn-danger multiple" onclick="cjDeleteResource()">
+                                        <i class="fa far fa-trash-alt"></i> 删除
+                                    </button>
+                                    <button class="btn btn-info" onclick="$.table.importExcel()">
+                                        <i class="fa fa-upload"></i> 导入
+                                    </button>
+                                    <button class="btn btn-warning" onclick="$.table.exportExcel()"
+                                            style="color: white">
+                                        <i class="fa fa-download"></i> 导出
+                                    </button>
+                                </div>
+
+                                <button aria-controls="collapseExample" aria-expanded="false"
+                                        class="btn btn-sm btn-primary"
+                                        data-target="#collapseExample" data-toggle="collapse"
+                                        type="button">
+                                    <i class="fas fa-search mr-1"></i> search
+                                </button>
+
+                            </div>
+                            <div class="collapse mt-2" id="collapseExample">
+                                <div class="card card-body">
+                                    <form action="javascript:void(0)" id="cjUserDataTableForm">
+                                        <div class="row" id="cjSearchFirstRow">
+                                            <div class="col-sm-4">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label text-sm"
+                                                           for="cjSearchAccount">账号：</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control form-control-sm"
+                                                               id="cjSearchAccount"
+                                                               placeholder="" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label text-sm"
+                                                           for="cjSearchShowname">显示名：</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control form-control-sm"
+                                                               id="cjSearchShowname"
+                                                               placeholder="" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" id="cjSearchSecondRow">
+                                            <div class="col-sm-4">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label text-sm"
+                                                           for="cjSearchTel">电话号码：</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control form-control-sm" id="cjSearchTel"
+                                                               placeholder="" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label text-sm"
+                                                           for="cjSearchEmail">邮箱：</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control form-control-sm"
+                                                               id="cjSearchEmail"
+                                                               placeholder="" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <button class="btn btn-success btn-rounded btn-sm"
+                                                        onclick="cjUserTableSearch()"><i class="fa fa-search"></i>&nbsp;搜索
+                                                </button>
+                                                <button class="btn btn-warning btn-rounded btn-sm ml-2"
+                                                        onclick="cjUserTableSearchReset()"
+                                                        style="color: white"><i
+                                                        class="fas fa-sync"></i>&nbsp;重置
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <ul id="cjSysResourceTree" class="ztree" ></ul>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+        All rights reserved.
+        <div class="float-right d-none d-sm-inline-block">
+            <b>Version</b> 3.0.5
+        </div>
+    </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+<th:block th:replace="~{fragment/fragment :: cjLearning_js}"/>
+</body>
+<script type="application/javascript">
+
+    /*
+    * 0. 全局性的js参数初始化设置
+    * */
+    var cjzTreeObj;
+    //选中的tree node
+    var cjSelectedTreeNode;
+
+    var cjTreeRootNodeId = 1;
+    //tree 的根节点
+    var cjTreeRootNode = {
+        id: cjTreeRootNodeId,
+        pId: null,
+        isParent: true,
+        name: "rootResource"
+    };
+/*
+* S1 START: zTree所有相关操作---------------------------------------------------------------------------------------
+* */
+    /*
+    * S1-1 START: 初始化zTree相关的设置----------------------------------------------------------------------------------------
+    * */
+    // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+    var setting = {
+        callback: {//回调函数设置
+            onClick: cjzTreeOnClick,
+            onDblClick: cjzTreeOnDbClick,
+            beforeDrop: cjzTreeBeforeDrop,//禁止将节点拖拽成为根节点,用于捕获节点拖拽操作结束之前的事件回调函数，并且根据返回值确定是否允许此拖拽操作
+            onDrop: cjzTreeOnDrop//拖拽成功后，重新加载ztree
+        },
+        check: {
+            //显示为radio
+            // enable: true,
+            // chkStyle: "radio"
+        },
+        data: {
+            key: {
+                name: "name",//节点显示名称
+                title: "title",//鼠标悬浮在节点时，提示内容
+                //zTree 节点数据保存节点链接的目标 URL 的属性名称。默认值为node的属性："url"
+                //设置为空，则点击时无反应
+                url: "",
+                isParent: "isParent"//节点是否为父节点
+            },
+            simpleData: {
+                enable: true,//采用simpleData
+                idKey: "id",
+                pIdKey: "pid",
+                rootPId: cjTreeRootNodeId//设置rootPid
+            }
+        },
+        edit: {
+            enable: true,
+            showRemoveBtn: false,//不显示删除按钮
+            showRenameBtn: false,//不显示重命名按钮
+            drag: {
+                prev: true,
+                next: true,
+                inner: true
+            }
+
+        },
+        view: {
+            // dblClickExpand: false,//双击节点时，是否自动展开父节点的标识
+            selectedMulti: false,//设置是否允许同时选中多个节点。
+            showIcon: false,
+            nameIsHTML: true,
+            nodeClasses : {add: ['cjzTreeNodeCss']}
+        }
+    };
+
+    function cjzTreeBeforeDrop(treeId, treeNodes, targetNode, moveType) {
+        console.log("cjzTreeBeforeDrop...");
+        var cjzTreeBeforeDropFalg = true;
+        if (targetNode == null || (moveType != "inner" && !targetNode.parentTId)) {
+            cjzTreeBeforeDropFalg = false;
+            return cjzTreeBeforeDropFalg;
+        }
+        //移动节点的id
+        var cjzTreeBeforeDropNodeId = treeNodes[0].id;
+        //移动类型
+        var cjzTreeBeforeDropMoveType = moveType;
+        //目标节点的id
+        var cjzTreeBeforeDropTargetId = targetNode.id;
+        console.log("移动" + treeNodes[0].name + "," + moveType + "-->" + targetNode.name);
+        var cjzTreeNodeMove = {
+            "treeNodeId": treeNodes[0].id,
+            "moveType": moveType,
+            "targetId": targetNode.id,
+        }
+        $.ajax({
+            url: "/article/category/move",
+            async: "false",//同步处理，避免错误
+            method: "post",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(cjzTreeNodeMove),
+            success: function (result) {
+                console.log("move ztreeNode success");
+            },
+            error: function () {
+                bootbox.alert("move ztreeNode 失败,请联系管理员");
+                cjzTreeBeforeDropFalg = false;
+            }
+        });
+        return cjzTreeBeforeDropFalg;
+    }
+
+    function cjzTreeOnDrop(event, treeId, treeNodes, targetNode, moveType) {
+
+    }
+
+    function cjzTreeOnDbClick(event, treeId, treeNode) {//单机分类，右侧展示分类下的文章
+        cjShowResource(treeNode.id);
+    }
+
+    /*zTree单击事件
+    *   获取选中的节点
+    * */
+    function cjzTreeOnClick(event, treeId, treeNode) {
+        cjSelectedTreeNode = treeNode;
+    }
+
+    function initzTree() {
+        $.ajax({
+            url: "/admin/system/resource/all",
+            method: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (result) {
+
+                //zNodes = eval(data.menuAll);
+                zNodes = result.data;
+                //初始化
+                cjzTreeObj = $.fn.zTree.init($("#cjSysResourceTree"), setting, zNodes);
+
+                var cjAllnodes = cjzTreeObj.getNodes();
+
+                for (var i = 0; i < cjAllnodes.length; i++) { //展开到第二层节点
+                    cjzTreeObj.expandNode(cjAllnodes[i], true, false, true);
+                }
+
+            },
+            error: function () {
+                bootbox.alert("/article/category/getList 获取 categories 失败，无法初始化ztree,请联系理管理员");
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        initzTree();
+    });
+    /*
+    * S1-1 END. 初始化zTree相关的设置---------------------------------------------------------------------------------------END
+    * */
+
+    /*
+    *S1-2 START. tree的所有操作---------------------------------------------------------------------------------------------
+    * */
+
+        /*
+        * S1-2-1 START. tree的相关工具类----------------------------------------------------------------------------------------
+        * */
+
+    /*
+    * 初始化fontawesome-picker
+    * */
+    function cjFontAwesomeInit() {
+        // 点击下拉按钮显示图标
+        $('.btn-group>button').on("click", function () {
+            $('.icp-dd').iconpicker({
+                //title: 'Dropdown with picker',
+                //component:'.btn > i'
+            }).on('iconpickerSelected', function (event) {//选中所需icon时。。。
+                /* event.iconpickerValue */
+                //console.log("iconpickerSelected...", event.iconpickerValue)
+                let cjFbutton = $(this);
+                cjFbutton.text(event.iconpickerValue);
+            }).on('iconpickerDestroyed', function (event) {
+                let cjFbutton = $(this);
+                cjFbutton.text("");
+                $("button#cjResourceAddForm_showIcon i").replaceWith('<i class="fas fa-anchor"></i>');
+            });
+        });
+    }
+
+    /*
+    * 清空resource show/add/update 模态框内所有内容
+    * */
+    function cjResourceModalReset(modalId) {
+        $(modalId + " form").cjFormReset();//清空表单
+        $.iconpicker.batch('.icp.iconpicker-element', 'destroy');
+    }
+
+        /*
+        * S1-2-1 End. tree的相关工具类---------------------------------------------------------------------------------------
+        * */
+
+
+        /*
+       * S1-2-2 START. tree的CRUD----------------------------------------------------------------------------------------------
+       * */
+
+                /*
+              * S 1-2-2-1 START. resource--show/get/select-----------------------------------------------------------------------------------------
+              * 1.获取当前节点id
+              * 2.从后台获取这个resource的数据
+              * 3.成功获取后，打开模态框时，初始化 fontawesome-iconpicker
+              * */
+    function cjShowResource(resourceId) {
+        $.ajax({//更新
+            url: "/admin/system/resource/" + resourceId,
+            method: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data) {
+                let cjShowResource = data.data;
+
+                $("#cjResourceShowModal").on('show.bs.modal', function (e) {
+                    cjFontAwesomeInit();
+                    $("#cjResourceShowForm").cjSetFormByJsonObject(cjShowResource);
+                    $("button#cjResourceShowForm_showIcon i").replaceWith('<i class="' + cjShowResource.fontIcon + '"></i>');
+                    $("button#cjResourceShowForm_fontIcon").text(cjShowResource.fontIcon);
+                }).on('hidden.bs.modal', function (e) {
+                    cjResourceModalReset("#cjResourceShowModal")
+                }).modal('show');
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                bootbox.alert("cj Show--Get Resource获取失败,请联系管理员!");
+            }
+        });
+    }
+
+            /*
+            * S1-2-2-1 END. resource--show/get/select-----------------------------------------------------------------------------------------
+            * */
+
+            /*
+            * S1-2-2-2 START. resource--CREATE-----------------------------------------------------------------------------------------
+            * 1.获取父节点
+            * 2.打开模态框
+            *   打开模态框时，初始化 fontawesome-iconpicker
+            * */
+
+    function cjAddResource() {
+        //1.获取父节点
+        let nodes = cjzTreeObj.getSelectedNodes();
+        if (nodes.length < 1) {
+            //alert("请选择文章分类");
+            //return;
+            cjSelectedTreeNode = cjTreeRootNode;
+        } else {
+            cjSelectedTreeNode = nodes[0];
+        }
+
+        //设置模态框中的parentId
+        $("#cjResourceAddForm_ParentId").val(cjSelectedTreeNode.id);
+
+        $("#cjResourceAddModal")
+            .on('show.bs.modal', function (e) {
+                cjFontAwesomeInit();
+            })
+            .on('hidden.bs.modal', function (e) {
+                cjResourceModalReset("#cjResourceAddModal");
+                cjzTreeObj.destroy();
+                initzTree();
+            }).modal('show');
+    }
+
+    /*
+      * 添加资源--提交
+      * */
+    $("#cjResourceModalAdd_subbtn").on("click", function () {
+
+        var cjResourceAddForm = $("#cjResourceAddForm").cjFormSerializeObject();
+        cjResourceAddForm["fontIcon"] = $("#cjResourceAddForm .icp-dd").text();
+        // console.log(cjResourceAddForm);
+        $.ajax({
+            url: "/admin/system/resource",
+            method: "post",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(cjResourceAddForm),
+            success: function (data) {
+                if (data.error) {
+                    cjUniversalExceptionMessage = data.cjExceptionHandlerMessage;
+                    //console.log("cjcq统一错误处理报错--cj user add ： ", cjUniversalExceptionMessage);
+                    if (cjUniversalExceptionMessage.cjMessage.msg == "cjValidateMessage") {
+                        let cjStringError = $.cjValidateErrorToString(cjUniversalExceptionMessage.cjMessage.data);
+                        bootbox.alert("cj add user " + " 失败 : " + cjStringError + ",请联系管理员!");
+                    }
+                } else {
+                    bootbox.alert("cj resource 添加成功!");
+                    $("#cjResourceAddModal").modal('hide');
+                    //更新zTree
+
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                bootbox.alert("cj create User 失败,请联系管理员!");
+            }
+
+        });
+    });
+            /*
+            * S1-2-2-2 END. resource--CREATE-----------------------------------------------------------------------------------------
+            * */
+
+            /*
+            * S1-2-2-3 START. resource--UPDATE-----------------------------------------------------------------------------------------
+            * 1.获取选中的节点
+            * 2.打开模态框
+            *   打开模态框时，初始化 fontawesome-iconpicker
+            * */
+
+    function cjUpdateResource() {
+        //1.获取选中的节点
+        let nodes = cjzTreeObj.getSelectedNodes();
+        if (nodes.length < 1) {
+            bootbox.alert("请先选择资源！！！！");
+            return;
+        }
+        cjSelectedTreeNode = nodes[0];
+        $.ajax({//更新
+            url: "/admin/system/resource/" + cjSelectedTreeNode.id,
+            method: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data) {
+                let cjUpdateResource = data.data;
+
+                $("#cjResourceUpdateModal").on('show.bs.modal', function (e) {
+                    cjFontAwesomeInit();
+                    $("#cjResourceUpdateForm").cjSetFormByJsonObject(cjUpdateResource);
+                    $("button#cjResourceUpdateForm_showIcon i").replaceWith('<i class="' + cjUpdateResource.fontIcon + '"></i>');
+                    $("button#cjResourceUpdateForm_fontIcon").text(cjUpdateResource.fontIcon);
+                }).on('hidden.bs.modal', function (e) {
+                    cjResourceModalReset("#cjResourceUpdateModal");
+                    cjzTreeObj.destroy();
+                    initzTree();
+                }).modal('show');
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                bootbox.alert("cj Show--Get Resource获取失败,请联系管理员!");
+            }
+        });
+    }
+
+    /*
+      * update resource--submit
+      * */
+    $("#cjResourceModalUpdate_subbtn").on("click", function () {
+
+        var cjResourceUpdateForm = $("#cjResourceUpdateForm").cjFormSerializeObject();
+        cjResourceUpdateForm["fontIcon"] = $("#cjResourceUpdateForm .icp-dd").text();
+        $.ajax({
+            url: "/admin/system/resource/" + cjResourceUpdateForm["id"],
+            method: "put",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(cjResourceUpdateForm),
+            success: function (data) {
+                if (data.error) {
+                    cjUniversalExceptionMessage = data.cjExceptionHandlerMessage;
+                    if (cjUniversalExceptionMessage.cjMessage.msg == "cjValidateMessage") {
+                        let cjStringError = $.cjValidateErrorToString(cjUniversalExceptionMessage.cjMessage.data);
+                        bootbox.alert("cj update user " + " 失败 : " + cjStringError + ",请联系管理员!");
+                    }
+                } else {
+                    bootbox.alert("cj resource 修改成功!");
+                    $("#cjResourceUpdateModal").modal('hide');
+
+
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                bootbox.alert("cj update User 失败,请联系管理员!");
+            }
+
+        });
+    });
+            /*
+            * S1-2-2-3 END. resource--UPDATE-----------------------------------------------------------------------------------------
+            * */
+
+            /*
+            * S1-2-2-4 START. resource--DELETE-----------------------------------------------------------------------------------------
+            * */
+    function cjDeleteResource() {
+        //1.获取父节点
+        let cjSelectDeleteNodes = cjzTreeObj.getSelectedNodes();
+        if (cjSelectDeleteNodes.length < 1) {
+            bootbox.alert("请先选择resource");
+            return;
+        }
+        cjSelectedTreeNode = cjSelectDeleteNodes[0];
+
+        let cjDeleteNodes = cjzTreeObj.transformToArray(cjSelectedTreeNode);
+        let cjDeleteNodesName = [];
+        for (i = 0; i < cjDeleteNodes.length; i++) {
+            cjDeleteNodesName[i] = cjDeleteNodes[i].id;
+        }
+        bootbox.confirm("确定删除？" + cjDeleteNodesName.join(";"),
+            function (result) {
+                //console.log('This was logged in the callback: ' + result);
+                if (result) {
+                    $.ajax({//更新
+                        url: "/admin/system/resource/" + cjSelectedTreeNode.id,
+                        method: "delete",
+                        dataType: "json",
+                        contentType: "application/json",
+                        success: function () {
+                            bootbox.alert("cj delete resource 成功！");
+                            cjzTreeObj.destroy();
+                            initzTree();
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            bootbox.alert("cj delet resource 失败,请联系管理员!");
+                        }
+                    });
+                }
+            });
+    }
+
+            /*
+            * S1-2-2-4 END.  resource--delete-----------------------------------------------------------------------------------------
+            * */
+
+        /*
+       * S1-2-2 END. tree的CRUD----------------------------------------------------------------------------------------
+       * */
+
+    /*
+    *S1-2 END. tree的所有操作--END-------------------------------------------------------------------------------------------
+    * */
+
+/*
+* S1 END. zTree所有相关操作---------------------------------------------------------------------------------------
+* */
+</script>
+
+
+</body>
+
+</html>

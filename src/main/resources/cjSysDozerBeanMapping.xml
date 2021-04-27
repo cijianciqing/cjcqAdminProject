@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozermapper.github.io/schema/bean-mapping"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozermapper.github.io/schema/bean-mapping http://dozermapper.github.io/schema/bean-mapping.xsd">
+
+
+    <!-- user 转换为 editUser格式 -->
+    <mapping>
+        <class-a>com.ns.cjcq.security.domain.CJUser</class-a>
+        <class-b>com.ns.cjcq.security.dvo.CJEditUser</class-b>
+        <field>
+            <a>cjUserAndRoles</a>
+            <b>userRoles</b>
+            <a-hint>com.ns.cjcq.security.domain.CJUserAndRole</a-hint>
+            <b-hint>com.ns.cjcq.common.select2.entity.CJSelect2Entity</b-hint>
+        </field>
+    </mapping>
+
+    <!-- userAndRole 转换为 select2格式 -->
+    <mapping>
+        <class-a>com.ns.cjcq.security.domain.CJUserAndRole</class-a>
+        <class-b>com.ns.cjcq.common.select2.entity.CJSelect2Entity</class-b>
+        <field>
+            <a>cjRole.id</a>
+            <b>id</b>
+        </field>
+        <field>
+            <a>cjRole.name</a>
+            <b>text</b>
+        </field>
+    </mapping>
+
+    <!-- role 转换为 select2格式 -->
+    <mapping>
+        <class-a>com.ns.cjcq.security.domain.CJRole</class-a>
+        <class-b>com.ns.cjcq.common.select2.entity.CJSelect2Entity</class-b>
+        <field>
+            <a>name</a>
+            <b>text</b>
+        </field>
+    </mapping>
+
+    <!--  CJResource To CJViewResource -->
+    <mapping>
+        <class-a>com.ns.cjcq.security.domain.CJResource</class-a>
+        <class-b>com.ns.cjcq.common.zTree.entity.CJZTreeNodeResourceEntity</class-b>
+        <field>
+            <a>parent.id</a>
+            <b>pid</b>
+        </field>
+        <field>
+            <a>resDesc</a>
+            <b>title</b>
+        </field>
+    </mapping>
+
+    <!--  CJResource To CJViewResource -->
+    <mapping>
+        <class-a>com.ns.cjcq.security.domain.CJResource</class-a>
+        <class-b>com.ns.cjcq.security.dvo.CJViewResource</class-b>
+        <field>
+            <a>parent.id</a>
+            <b>parentId</b>
+        </field>
+    </mapping>
+
+
+</mappings>

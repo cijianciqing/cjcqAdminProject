@@ -11,6 +11,370 @@
 <body>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<!--模态框--Start-->
+<div class="modal fade" id="cjUserShowModal">
+    <div class="modal-dialog">
+        <div class="modal-content bg-info">
+            <div class="modal-header">
+                <h4 class="modal-title">Show User</h4>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form action="javascript:void(0)" id="cjUserShowForm">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserShowForm_showname">用户名：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="far fa-address-card"></i>
+                                </span>
+                                </div>
+                                <input disabled class="form-control form-control-sm" id="cjUserShowForm_showname" name="showname"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserShowForm_username">账号：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-user"></i>
+                                </span>
+                                </div>
+                                <input disabled class="form-control form-control-sm" id="cjUserShowForm_username" name="username"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserShowForm_password">密码：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      onmousedown="$('#cjUserAddForm_password').attr('type','text')"
+                                      onmouseup="$('#cjUserAddForm_password').attr('type','password')"
+                                      title="登录密码,鼠标按下显示密码">
+                                 <i class="fas fa-key"></i>
+                                </span>
+                                </div>
+                                <input disabled class="form-control form-control-sm" id="cjUserShowForm_password" name="password"
+                                       placeholder="" required type="password">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserShowForm_telephoneNo">电话：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-phone"></i>
+                                </span>
+                                </div>
+                                <input disabled class="form-control form-control-sm" id="cjUserShowForm_telephoneNo"
+                                       name="telephoneNo"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserShowForm_email">邮件：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                <i class="fas fa-envelope"></i>
+                                </span>
+                                </div>
+                                <input disabled class="form-control form-control-sm" id="cjUserShowForm_email" name="email"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserShowForm_roles">角色：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                <i class="fab fa-gg-circle"></i>
+                                </span>
+                                </div>
+                                <input disabled class="form-control form-control-sm" id="cjUserShowForm_roles" name="cjUserRoles"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button class="btn btn-outline-light" data-dismiss="modal" type="button">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<div class="modal fade" id="cjUserAddModal">
+    <div class="modal-dialog">
+        <div class="modal-content bg-success">
+            <div class="modal-header">
+                <h4 class="modal-title">Add User</h4>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form action="javascript:void(0)" id="cjUserAddForm">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserAddForm_showname">用户名：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="far fa-address-card"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjUserAddForm_showname" name="showname"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserAddForm_username">账号：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-user"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjUserAddForm_username" name="username"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserAddForm_password">密码：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      onmousedown="$('#cjUserAddForm_password').attr('type','text')"
+                                      onmouseup="$('#cjUserAddForm_password').attr('type','password')"
+                                      title="登录密码,鼠标按下显示密码">
+                                 <i class="fas fa-key"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjUserAddForm_password" name="password"
+                                       placeholder="" required type="password">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserAddForm_telephoneNo">电话：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-phone"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjUserAddForm_telephoneNo"
+                                       name="telephoneNo"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserAddForm_email">邮件：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                <i class="fas fa-envelope"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjUserAddForm_email" name="email"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserAddForm_roles">角色</label>
+                        <div class="col-sm-9">
+                            <select name="cjUserRoles" class="select2  form-control form-control-sm"
+                                    id="cjUserAddForm_roles" multiple="multiple" style="width: 100%;">
+                            </select>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button class="btn btn-outline-light" data-dismiss="modal" type="button">Close</button>
+                <button class="btn btn-outline-light" id="cjUserModalAdd_subbtn" type="button">Save changes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="cjUserUpdateModal">
+    <div class="modal-dialog">
+        <div class="modal-content bg-warning">
+            <div class="modal-header">
+                <h4 class="modal-title">Update User</h4>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form action="javascript:void(0)" id="cjUserUpdateForm">
+                    <input class="form-control" id="cjUserUpdateForm_id" name="id"
+                           type="hidden">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserUpdateForm_showname">用户名：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="far fa-address-card"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjUserUpdateForm_showname"
+                                       name="showname"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserUpdateForm_username">账号：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-user"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjUserUpdateForm_username"
+                                       name="username"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserUpdateForm_password">密码：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                 <span class="input-group-text"
+                                       onmousedown="$('#cjUserUpdateForm_password').attr('type','text')"
+                                       onmouseup="$('#cjUserUpdateForm_password').attr('type','password')"
+                                       title="登录密码,鼠标按下显示密码">
+                                 <i class="fas fa-key"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjUserUpdateForm_password"
+                                       name="password"
+                                       placeholder="" required type="password">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserUpdateForm_telephoneNo">电话：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                 <i class="fas fa-phone"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjUserUpdateForm_telephoneNo"
+                                       name="telephoneNo"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserUpdateForm_email">邮件：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                <i class="fas fa-envelope"></i>
+                                </span>
+                                </div>
+                                <input class="form-control form-control-sm" id="cjUserUpdateForm_email" name="email"
+                                       placeholder="" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-sm"
+                               for="cjUserUpdateForm_roles">角色</label>
+                        <div class="col-sm-9">
+                            <select name="cjUserRoles" class="select2  form-control form-control-sm"
+                                    id="cjUserUpdateForm_roles" multiple="multiple" style="width: 100%;">
+                            </select>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button class="btn btn-outline-light" data-dismiss="modal" type="button">Close</button>
+                <button class="btn btn-outline-light" id="cjUserModalUpdate_subbtn" type="button">Save changes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!--模态框--END-->
+</div>
 <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -174,6 +538,26 @@
                                     <p>用户管理</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="/templates/system/role.html"
+                                   th:href="@{/admin/system/role}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>角色管理</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="/templates/system/role.html"
+                                   th:href="@{/admin/system/resource}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>资源管理</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./index3.html">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Dashboard v3</p>
+                                </a>
+                            </li>
                             <li class="nav-item has-treeview ">
                                 <a class="nav-link " href="#">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -203,11 +587,46 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./index3.html">
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview menu-open">
+                        <a class="nav-link active" href="#">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                左侧导航栏第一级
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview ">
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/templates/system/user.html"
+                                   th:href="@{/admin/system/user}">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v3</p>
+                                    <p>左侧导航栏第二级00</p>
                                 </a>
+                            </li>
+                            <li class="nav-item has-treeview ">
+                                <a class="nav-link " href="#">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        左侧导航栏第二级
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview ">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./index.html">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>左侧导航栏第三级</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="./cjIndex.html">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>左侧导航栏第三级</p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </li>
@@ -226,15 +645,14 @@
         </div>
         <!-- /.sidebar -->
     </aside>
-    <!-- /.sidebar -->
-    </aside>
+
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-<!--            <div class="card card-body">-->
+            <!--            <div class="card card-body">-->
 
-<!--            </div>-->
+            <!--            </div>-->
         </section>
 
         <!-- Main content -->
@@ -245,77 +663,102 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-<!--                                <div class="row">-->
-<!--                                    <h3 class="card-title">DataTable with default features</h3>-->
-<!--                                </div>-->
+                                <!--                                <div class="row">-->
+                                <!--                                    <h3 class="card-title">DataTable with default features</h3>-->
+                                <!--                                </div>-->
 
-                                    <div class="d-flex justify-content-between">
-                                        <div class="btn-group-sm" id="toolbar" role="group">
-                                            <button class="btn btn-success" onclick="$.operate.addTab()">
-                                                <i class="fa fa-plus"></i> 新增
-                                            </button>
-                                            <button class="btn btn-primary single " onclick="$.operate.editTab()">
-                                                <i class="fa fa-edit"></i> 修改
-                                            </button>
-                                            <button class="btn btn-danger multiple" onclick="$.operate.removeAll()">
-                                                <i class="fa far fa-trash-alt"></i> 删除
-                                            </button>
-                                            <button class="btn btn-info" onclick="$.table.importExcel()">
-                                                <i class="fa fa-upload"></i> 导入
-                                            </button>
-                                            <button style="color: white" class="btn btn-warning" onclick="$.table.exportExcel()">
-                                                <i class="fa fa-download"></i> 导出
-                                            </button>
-                                        </div>
-
-                                            <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                                <i class="fas fa-search mr-1"></i> search
-                                            </button>
-
+                                <div class="d-flex justify-content-between">
+                                    <div class="btn-group-sm" id="toolbar" role="group">
+                                        <!--data-target="#cjUserAddModal"-->
+                                        <button class="btn btn-success" onclick="cjAddUser()"
+                                                type="button">
+                                            <i class="fa fa-plus"></i> 新增
+                                        </button>
+                                        <button class="btn btn-primary single " onclick="$.operate.editTab()">
+                                            <i class="fa fa-edit"></i> 修改
+                                        </button>
+                                        <button class="btn btn-danger multiple" onclick="$.operate.removeAll()">
+                                            <i class="fa far fa-trash-alt"></i> 删除
+                                        </button>
+                                        <button class="btn btn-info" onclick="$.table.importExcel()">
+                                            <i class="fa fa-upload"></i> 导入
+                                        </button>
+                                        <button class="btn btn-warning" onclick="$.table.exportExcel()"
+                                                style="color: white">
+                                            <i class="fa fa-download"></i> 导出
+                                        </button>
                                     </div>
+
+                                    <button aria-controls="collapseExample" aria-expanded="false"
+                                            class="btn btn-sm btn-primary"
+                                            data-target="#collapseExample" data-toggle="collapse"
+                                            type="button">
+                                        <i class="fas fa-search mr-1"></i> search
+                                    </button>
+
+                                </div>
                                 <div class="collapse mt-2" id="collapseExample">
                                     <div class="card card-body">
-                                        <div class="row" id="cjSearchFirstRow">
-                                            <div class="col-sm-4">
-                                                <div class="form-group row">
-                                                    <label for="cjSearchAccount" class="col-sm-3 col-form-label text-sm">账号：</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control form-control-sm" id="cjSearchAccount" placeholder="">
+                                        <form action="javascript:void(0)" id="cjUserDataTableForm">
+                                            <div class="row" id="cjSearchFirstRow">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label text-sm"
+                                                               for="cjSearchAccount">账号：</label>
+                                                        <div class="col-sm-9">
+                                                            <input class="form-control form-control-sm"
+                                                                   id="cjSearchAccount"
+                                                                   placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label text-sm"
+                                                               for="cjSearchShowname">显示名：</label>
+                                                        <div class="col-sm-9">
+                                                            <input class="form-control form-control-sm"
+                                                                   id="cjSearchShowname"
+                                                                   placeholder="" type="text">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group row">
-                                                    <label for="cjSearchShowname" class="col-sm-3 col-form-label text-sm">显示名：</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control form-control-sm" id="cjSearchShowname" placeholder="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="row" id="cjSearchSecondRow">
-                                            <div class="col-sm-4">
-                                                <div class="form-group row">
-                                                    <label for="cjSearchTel" class="col-sm-3 col-form-label text-sm">电话号码：</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control form-control-sm" id="cjSearchTel" placeholder="">
+                                            <div class="row" id="cjSearchSecondRow">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label text-sm"
+                                                               for="cjSearchTel">电话号码：</label>
+                                                        <div class="col-sm-9">
+                                                            <input class="form-control form-control-sm" id="cjSearchTel"
+                                                                   placeholder="" type="text">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group row">
-                                                    <label for="cjSearchEmail" class="col-sm-3 col-form-label text-sm">邮箱：</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control form-control-sm" id="cjSearchEmail" placeholder="">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label text-sm"
+                                                               for="cjSearchEmail">邮箱：</label>
+                                                        <div class="col-sm-9">
+                                                            <input class="form-control form-control-sm"
+                                                                   id="cjSearchEmail"
+                                                                   placeholder="" type="text">
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <div class="col-sm-4">
+                                                    <button class="btn btn-success btn-rounded btn-sm"
+                                                            onclick="cjUserTableSearch()"><i class="fa fa-search"></i>&nbsp;搜索
+                                                    </button>
+                                                    <button class="btn btn-warning btn-rounded btn-sm ml-2"
+                                                            onclick="cjUserTableSearchReset()"
+                                                            style="color: white"><i
+                                                            class="fas fa-sync"></i>&nbsp;重置
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <div class="col-sm-4">
-                                                <button class="btn btn-success btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</button>
-                                                <button style="color: white" class="btn btn-warning btn-rounded btn-sm ml-2" onclick="$.form.reset()"><i class="fas fa-sync"></i></i>&nbsp;重置</button>
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
 
@@ -323,8 +766,8 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table cellspacing="0" class="table" id="cjSysUserTable" width="100%">
-                                    <thead class="thead-light">
+                                <table cellspacing="0" class="table table-striped" id="cjSysUserTable" width="100%">
+                                    <thead class=" text-sm">
                                     <tr>
                                         <th>序号</th>
                                         <th>ID</th>
@@ -353,8 +796,7 @@
     </div>
 
     <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark" style="background-color: brown;">
-        111
+    <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
     </aside>
 
@@ -380,14 +822,40 @@
     var removeFlag = 'cjPermitEdit';
     var resetPwdFlag = 'cjPermitEdit';
     var cjSysUserTableInstance;
+    /*
+    * cjcq  统一错误处理
+    * */
+    var cjUniversalExceptionMessage
 
+/*
+* S1 START. user --dataTables及其相关的CRUD操作
+*
+* */
+    /*
+    * S1-1 START. 全局配置------------------------------------------------------------------------------------------------
+    * */
+    /*
+    * S1-1-1 START. 全局参数设置---------------------------------------------------------------------------------------------
+    * */
+    //所有的roles数据，用于user进行权限配置
+    var cjAllUserRoles;
+    var cjUserTableDom = $('#cjSysUserTable');
+    /*
+      * S1-1-1 END. 全局参数设置---------------------------------------------------------------------------------------------
+      * */
+    /*
+    * S1-2 START. user dataTables 全局配置---------------------------------------------------------------------------------------
+    * */
+    /*
+    *  user dataTables 初始化操作
+    * */
     function cjInitDataTables() {
         /*
         * 初始化article table
         * */
         var cjLanguageUrl = "/cjThirdStatic/datatables/cjLanguage.json";
         /*cjUserTalble初始化*/
-        cjSysUserTableInstance = $('#cjSysUserTable').DataTable({
+        cjSysUserTableInstance = cjUserTableDom.DataTable({
             // dom: 'frtip',
             dom: 'tip',
             stateSave: true,
@@ -407,27 +875,32 @@
                 cache: false,  //禁用缓存
                 contentType: "application/json",
                 dataType: "json",
-                data: function (d) {
+                data: function (d) {//设置请求参数
                     var cjAjaxparam = {};
                     cjAjaxparam.draw = d.draw;
                     cjAjaxparam.limit = d.length;//页面显示记录条数，在页面显示每页显示多少项的时候
                     cjAjaxparam.start = d.start;//开始的记录序号
                     cjAjaxparam.page = (d.start / d.length) + 1;//当前页码
                     //cjAjaxparam.order = data.order[0];
-                    cjAjaxparam.searchValue = d.search.value;
-                    //cjAjaxparam.searchArea = $('#cjDirOptions label.active').find('input').val();
+                    //cjAjaxparam.searchValue = d.search.value;
+                    cjAjaxparam.username = $("#cjSearchAccount").val();
+                    cjAjaxparam.showname = $("#cjSearchShowname").val();
+                    cjAjaxparam.telephone = $("#cjSearchTel").val();
+                    cjAjaxparam.email = $("#cjSearchEmail").val();
+
+                    //console.log("cjuser datatables请求的参数 : ", cjAjaxparam);
                     return JSON.stringify(cjAjaxparam);
                 },
-                dataFilter: function (data) {
+                dataFilter: function (data) {//返回数据过滤
                     var resultData = jQuery.parseJSON(data);
-                    console.log(resultData);
+                    //console.log(resultData);
                     var result = resultData.data;
                     var returnData = {};
                     returnData.draw = result.draw;//这里直接自行返回了draw计数器,应该由后台返回
                     returnData.recordsTotal = result.total;//返回数据全部记录
                     returnData.recordsFiltered = result.total;//后台不实现过滤功能，每次查询均视作全部结果
                     returnData.data = result.data;//返回的数据列表
-                    console.log("returnData: ", returnData.data);
+                    // console.log("returnData: ", returnData.data);
 
                     return JSON.stringify(returnData); // return JSON string
                 },
@@ -455,21 +928,22 @@
                 {data: 'showname'},
                 {data: 'telephoneNo'},
                 {data: 'email'},
-                {data: 'isEnabled',
-                render:function  (data, type, row, meta) {
-                    if(row.isEnabled){
-                        return '  <input  type="checkbox" name="my-checkbox"  data-bootstrap-switch data-off-color="danger" data-on-color="success" data-size="mini" checked> ';
+                {
+                    data: 'isEnabled',
+                    render: function (data, type, row, meta) {
+                        if (row.isEnabled) {
+                            return '  <input  type="checkbox" name="my-checkbox"  data-bootstrap-switch data-off-color="danger" data-on-color="success" data-size="mini" checked> ';
+                        }
+                        //console.log("123  ");
+                        return '  <input type="checkbox" name="my-checkbox"  data-bootstrap-switch data-off-color="danger" data-size="mini" data-on-color="success" >';
                     }
-                    console.log("123  ");
-                    return '  <input type="checkbox" name="my-checkbox"  data-bootstrap-switch data-off-color="danger" data-size="mini" data-on-color="success" >';
-                }
                 },
                 {
                     data: null,
                     render: function (data, type, row, meta) {
                         var actions = [];
-                        actions.push('<button class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="editUser(\'' + row.id + '\')"><i class="fa fa-edit mr-1"></i>编辑</button> ');
-                        actions.push('<button class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="editUser(\'' + row.id + '\')"><i class="fa far fa-trash-alt mr-1"></i>删除</button> ');
+                        actions.push('<button style="color: white" class="btn btn-warning btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="cjEditUser(\'' + row.id + '\')"><i class="fa fa-edit mr-1"></i>编辑</button> ');
+                        actions.push('<button class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="cjRemoveUser(\'' + row.id + '\')"><i class="fa far fa-trash-alt mr-1"></i>删除</button> ');
                         var more = [];
                         more.push("<a class='btn btn-default btn-xs " + resetPwdFlag + "' href='javascript:void(0)' onclick='editUser(" + row.id + ")'><i class='fa fa-key'></i>重置密码</a> ");
                         more.push("<a class='btn btn-default btn-xs " + editFlag + "' href='javascript:void(0)' onclick='editUser(" + row.id + ")'><i class='fab fa-gg-circle'></i>分配角色</a>");
@@ -486,10 +960,15 @@
                     "visible": false,
                     "targets": [1]
                 },
+                {
+                    "orderable": false,
+                    //去掉排序
+                    "targets": [1, 2, 3, 4, 5, 6, 7]
+                },
 
             ],
             "drawCallback": function (settings) {//dataTables加载完成后
-                console.log('CJ User DataTables has redrawn the table');
+                //console.log('CJ User DataTables has redrawn the table');
                 /*
                 * popover初始化
                 * */
@@ -498,22 +977,316 @@
                 /*
                * bootstrap-switch初始化
                * */
-                $("input[data-bootstrap-switch]").each(function(){
+                $("input[data-bootstrap-switch]").each(function () {
                     $(this).bootstrapSwitch('state', $(this).prop('checked'));
                 });
             }
         });
-        /*cjUserTalble设置--设置默认排序规则*/
-        // cjSysUserTableInstance.order([4, 'desc']).draw();
-
-
-    };
+    }
 
 
     $(document).ready(function () {
         /*始化data tables*/
         cjInitDataTables();
+
+        /*
+        * 获取所有的roles
+        * */
+        $.ajax({
+            url: "/admin/system/role/all",
+            method: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data) {
+                // console.log("取所有的roles: ");
+                // console.log(typeof (data));
+                cjAllUserRoles = data.results
+                // console.log("cjAllUserRoles-->",cjAllUserRoles);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                bootbox.alert("cj Get all Roles 获取失败,请联系管理员!");
+            }
+        });
     });
+
+    /*
+   *  user dataTables 查询 及 重新加载
+   * */
+    function cjUserTableSearch() {
+        cjSysUserTableInstance.ajax.reload();
+    }
+
+    /*
+    * 清空user 搜索表单内的全部内容
+    * */
+    function cjUserTableSearchReset() {
+        $("#cjUserDataTableForm").cjFormReset();
+    }
+
+    /*
+ * 清空user add/update 模态框内所有内容
+ * */
+    function cjUserModalReset(modalId) {
+        $(modalId + " form" ).cjFormReset();//清空表单
+        $(modalId + " form .select2" ).val(null).trigger('change');//清空select2
+
+    }
+
+    /*
+   * S1-2 END. user dataTables 全局配置---------------------------------------------------------------------------------------
+   * */
+
+    /*
+    *S1-3 START. user dataTables CRUD---------------------------------------------------------------------------------
+    * */
+
+
+
+        /*
+         * S1-3-1 START. user dataTables CREATE---------------------------------------------------------------------------------
+         * 添加用户
+         * 1.打开模态框【同时设置：关闭模态框时，reset modal】
+         * 2.初始化select2
+         * */
+    function cjAddUser() {
+        $("#cjUserAddModal").on('show.bs.modal', function (e) {
+            $('#cjUserAddForm_roles').select2({
+                dropdownParent: $('#cjUserAddModal'),
+                theme: 'bootstrap4',
+                placeholder: "Select  roles",
+                ajax: {
+                    url: "/admin/system/role/all",
+                    method: "get",
+                    dataType: "json",
+                    contentType: "application/json",
+                    processResults: function (data) {
+                        // Transforms the top-level key of the response object from 'items' to 'results'
+                        return {
+                            results: data.results
+                        }
+                    }
+                }
+            });
+        }).on('hidden.bs.modal', function (e) {
+            cjUserModalReset("#cjUserAddModal");
+            $('#cjUserAddForm_roles').select2('destroy');
+        }).modal('show');
+    }
+        /*
+        * 添加用户--提交
+        * */
+        $("#cjUserModalAdd_subbtn").on("click", function () {
+
+            var cjUserAddFormData = $("#cjUserAddForm").cjFormSerializeObject();
+            let cjAddUserRolesData02 =  $("#cjUserAddForm_roles").select2("data");
+            cjUserAddFormData["userRoles"] = cjAddUserRolesData02;
+            $.ajax({
+                url: "/admin/system/user",
+                method: "post",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify(cjUserAddFormData),
+                success: function (data) {
+                    if (data.error) {
+                        cjUniversalExceptionMessage = data.cjExceptionHandlerMessage;
+                        //console.log("cjcq统一错误处理报错--cj user add ： ", cjUniversalExceptionMessage);
+                        if (cjUniversalExceptionMessage.cjMessage.msg == "cjValidateMessage") {
+                            let cjStringError = $.cjValidateErrorToString(cjUniversalExceptionMessage.cjMessage.data);
+                            bootbox.alert("cj add user " + " 失败 : " + cjStringError + ",请联系管理员!");
+                        }
+                    } else {
+                        bootbox.alert("cj user 添加成功!");
+                        $("#cjUserAddModal").modal('hide');
+                        cjSysUserTableInstance.ajax.reload(null, false);//cj user dataTables reload时，保证页面不变
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    bootbox.alert("cj create User 失败,请联系管理员!");
+                }
+
+            });
+        });
+    /*
+   * S1-3-1 END. user dataTables CREATE---------------------------------------------------------------------------------
+     * */
+    /*
+    * S1-3-2 START. user dataTables UPDATE---------------------------------------------------------------------------------
+    * 更新用户--打开模态框
+    * */
+        function cjEditUser(userId) {
+            /*
+            * 1.获取user
+            * 2.清空-->设置form
+            * 3.显示modal
+            * */
+            $.ajax({//更新
+                url: "/admin/system/user/" + userId,
+                method: "get",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (data) {
+                    var cjEditUser = data.data;
+                    var cjEditUserRoles = cjEditUser.userRoles;
+                    console.log("cjEditUserRoles: ",cjEditUserRoles);
+                   /* var cjEditUserRoleArray = cjEditUserRoles.map((item,index) => {
+                        return item.id;
+                    })*/
+                    //console.log("cjEditUserRoleArray-->",cjEditUserRoleArray );
+                    $("#cjUserUpdateForm").cjSetFormByJsonObject(cjEditUser);
+                    $("#cjUserUpdateModal").on('show.bs.modal', function (e) {
+                        // $('#cjUserUpdateForm_roles').select2();
+                        //初始化select
+                        $('#cjUserUpdateForm_roles').select2({
+                            dropdownParent: $('#cjUserUpdateModal'),
+                            theme: 'bootstrap4',
+                            placeholder: "Select  roles",
+                            ajax: {
+                                url: "/admin/system/role/all",
+                                method: "get",
+                                dataType: "json",
+                                contentType: "application/json",
+                                processResults: function (data) {
+                                    return {
+                                        results: data.results
+                                    }
+                                }
+                            }
+                        });
+
+                        $('#cjUserUpdateForm_roles')[0].options.length = 0;
+                        $.each(cjEditUserRoles,function (index,item) {
+                            let option = new Option(item.text, item.id, true, true);
+                            $('#cjUserUpdateForm_roles').append(option).trigger('change');
+                        })
+
+                        $('#cjUserUpdateForm_roles').trigger({
+                            type: 'select2:select',
+                            params: {
+                                data: cjEditUserRoles
+                            }
+                        });
+
+                    }).on('hidden.bs.modal', function (e) {
+                        cjUserModalReset("#cjUserUpdateModal");
+                    }).modal('show');
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    bootbox.alert("cj Upate--Get User获取失败,请联系管理员!");
+                }
+            });
+
+
+        }
+
+        /*
+      * 更新用户--提交
+      * */
+        $("#cjUserModalUpdate_subbtn").on("click", function () {
+            var cjUserUpdateFormData = $("#cjUserUpdateForm").cjFormSerializeObject();
+            let cjAddUserRolesData02 =  $("#cjUserUpdateForm_roles").select2("data");
+            cjUserUpdateFormData["userRoles"] = cjAddUserRolesData02;
+            $.ajax({
+                url: "/admin/system/user",
+                method: "put",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify(cjUserUpdateFormData),
+                success: function (data) {
+                    if (data.error) {
+                        cjUniversalExceptionMessage = data.cjExceptionHandlerMessage;
+                        //console.log("cjcq统一错误处理报错--cj user update ： ", cjUniversalExceptionMessage);
+                        if (cjUniversalExceptionMessage.cjMessage.msg == "cjValidateMessage") {
+                            let cjStringError = $.cjValidateErrorToString(cjUniversalExceptionMessage.cjMessage.data);
+                            bootbox.alert("cj update user " + " 失败 : " + cjStringError + ",请联系管理员!");
+                        }
+                    } else {
+                        bootbox.alert("cj user Update 成功!");
+                        $("#cjUserUpdateForm").cjFormReset();
+                        $("#cjUserUpdateModal").modal('hide');
+                        cjSysUserTableInstance.ajax.reload(null, false);//cj user dataTables reload时，保证页面不变
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    bootbox.alert("cj Update User 失败,请联系管理员!");
+                }
+
+            });
+        });
+    /*
+      * S1-3-2 END. user dataTables UPDATE------------------------------------------------------------------------------
+      * */
+
+        /*
+       * S1-3-3 START. user dataTables DELETE---------------------------------------------------------------------------
+       * 删除用户
+       * */
+        function cjRemoveUser(userId) {
+            bootbox.confirm("确定删除？",
+                function (result) {
+                    console.log('This was logged in the callback: ' + result);
+                    if (result) {
+                        $.ajax({//更新
+                            url: "/admin/system/user/" + userId,
+                            method: "delete",
+                            dataType: "json",
+                            contentType: "application/json",
+                            //data: JSON.stringify(cjUpdateData),
+                            success: function () {
+                                bootbox.alert("cj delete user 成功！");
+                                cjSysUserTableInstance.ajax.reload();
+                            },
+                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                bootbox.alert("cj delet User 失败,请联系管理员!");
+                                //error: cjAjaxErrorHandler("updateUser", XMLHttpRequest);
+                            }
+                        });
+                    }
+                });
+        }
+        /*
+        * S1-3-3 END. user dataTables DELETE---------------------------------------------------------------------------------
+        * */
+
+         /*
+        * S1-3-4 START. user dataTables Retrieve---------------------------------------------------------------------------------
+        * */
+    cjUserTableDom.on("dblclick","tr",function () {
+        let rowData = cjSysUserTableInstance.row( this ).data();
+        $.ajax({//更新
+            url: "/admin/system/user/" + rowData.id,
+            method: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data) {
+                let cjRetrievedUserData = data.data;
+                let cjRetrievedUserRoles = cjRetrievedUserData.userRoles;
+                let cjRetrieveUserRoleArray = cjRetrievedUserRoles.map((item,index) => {
+                    return item.text;
+                })
+                $("#cjUserShowForm").cjSetFormByJsonObject(cjRetrievedUserData);
+                $("#cjUserShowModal").on('show.bs.modal', function (e) {
+
+                    $('#cjUserShowForm_roles').val(cjRetrieveUserRoleArray);
+                }).on('hidden.bs.modal', function (e) {
+                    cjUserModalReset("#cjUserShowModal");
+                }).modal('show');
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                bootbox.alert("cj --Get User获取失败,请联系管理员!");
+            }
+        });
+    })
+        /*
+       * S1-3-4 END. user dataTables Retrieve---------------------------------------------------------------------------------
+       * */
+    /*
+    *S1-3 START. user dataTables CRUD---------------------------------------------------------------------------------
+    * */
+
+/*
+* S1 END. user --dataTables及其相关的CRUD操作
+*
+* */
 </script>
 
 

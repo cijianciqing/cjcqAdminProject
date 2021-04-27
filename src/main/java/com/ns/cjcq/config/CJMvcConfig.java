@@ -21,7 +21,7 @@ public class CJMvcConfig implements WebMvcConfigurer {
 		registry.addViewController("/index").setViewName("index");
 		registry.addViewController("/demo/ckeditor401").setViewName("demo/ckeditor4Demo01");
 		registry.addViewController("/demo/dataTablesDemo").setViewName("demo/dataTableDemo_ServerSide");
-
+		registry.addViewController("/demo/index").setViewName("demo/index");
 	}
 
 	/*静态资源设置*/
@@ -33,6 +33,7 @@ public class CJMvcConfig implements WebMvcConfigurer {
 		registry.addResourceHandler("/node_modules/**").addResourceLocations("classpath:/static/node_modules/");
 		registry.addResourceHandler("/sb2Static/**").addResourceLocations("classpath:/static/sb2/");
 		registry.addResourceHandler("/icon/**").addResourceLocations("classpath:/static/icon/");
+		registry.addResourceHandler("/cjStatic/**").addResourceLocations("classpath:/static/cjStatic/");
 
 	}
 

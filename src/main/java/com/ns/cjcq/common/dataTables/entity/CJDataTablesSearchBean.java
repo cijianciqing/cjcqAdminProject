@@ -13,6 +13,6 @@ public class CJDataTablesSearchBean {
     private Integer limit;
     private Integer start;
     private Integer page;
-    private String searchValue;
-    private String searchArea;
+    //private String searchValue;
+    //private String searchArea;
 }

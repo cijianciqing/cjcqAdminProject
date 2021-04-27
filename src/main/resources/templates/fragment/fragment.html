@@ -48,8 +48,12 @@
 
         <!-- overlayScrollbars -->
         <link rel="stylesheet" th:href="@{/node_modules/overlayscrollbars/css/OverlayScrollbars.css}" href="node_modules/overlayscrollbars/css/OverlayScrollbars.css">
+        <!--select 2 选择模块-->
+        <link rel="stylesheet" th:href="@{/node_modules/select2/dist/css/select2.css}" href="node_modules/select2/dist/css/dist/css/select2.css">
+        <link rel="stylesheet" th:href="@{/node_modules/admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}" href="node_modules/admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"  >
 
-
+        <!--fontawesome-iconPicker-->
+        <link rel="stylesheet" th:href="@{/cjThirdStatic/fontawesome-picker/css/fontawesome-iconpicker.min.css}" href="vendor/fontawesome-picker/css/fontawesome-iconpicker.css">
     </th:block>
 </head>
 
@@ -60,6 +64,8 @@
     <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
     <script th:src="@{/node_modules/jquery/dist/jquery.js}" src="node_modules/jquery/dist/jquery.js"></script>
+    <!-- jQuery -->
+    <script th:src="@{/cjStatic/js/cjForm.js}" src="cjStatic/js/cjForm.js"></script>
     <!-- Bootstrap -->
     <script th:src="@{/node_modules/bootstrap/dist/js/bootstrap.bundle.js}" src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 
@@ -84,7 +90,8 @@
     <script  th:src="@{/node_modules/bootstrap-switch/dist/js/bootstrap-switch.min.js}" src="node_modules/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
     <!-- PAGE SCRIPTS 暂时禁用-->
 <!--    <script th:src="@{/node_modules/admin-lte/dist/js/pages/dashboard2.js}" src="node_modules/admin-lte/dist/js/pages/dashboard2.js"></script>-->
-
+    <!-- Select2 -->
+    <script th:src="@{/node_modules/select2/dist/js/select2.full.js}" src="node_modules/select2/dist/js/select2.full.js"></script>
 
 
 <!--之前的JS-->
@@ -132,6 +139,10 @@
     <!--bootstrap box-->
     <script src="vendor/bootstrap/bootbox/bootbox.js" th:src="@{/cjThirdStatic/bootstrap/bootbox/bootbox.js}"></script>
     <script src="vendor/bootstrap/bootbox/bootbox.locales.js" th:src="@{/cjThirdStatic/bootstrap/bootbox/bootbox.locales.js}"></script>
+
+
+    <!--fontawesome-iconpicker-->
+    <script src="vendor/fontawesome-picker/js/fontawesome-iconpicker.js" th:src="@{/cjThirdStatic/fontawesome-picker/js/fontawesome-iconpicker.min.js}"></script>
 </th:block>
 </body>
 
