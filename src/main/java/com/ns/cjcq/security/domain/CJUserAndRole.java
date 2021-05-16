@@ -2,6 +2,8 @@ package com.ns.cjcq.security.domain;
 
 import com.ns.cjcq.common.entity.CJBaseEntity;
 import lombok.*;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -27,10 +29,12 @@ public class CJUserAndRole  extends CJBaseEntity implements Serializable {
 
     @ManyToOne(targetEntity = CJUser.class)
     @JoinColumn(name = "user_id",referencedColumnName = "id")
+    @NotFound(action= NotFoundAction.IGNORE)
     private CJUser cjUser;
 
     @ManyToOne(targetEntity = CJRole.class)
     @JoinColumn(name = "role_id",referencedColumnName = "id")
+    @NotFound(action= NotFoundAction.IGNORE)
     private CJRole cjRole;
 
     public CJUserAndRole(CJUser user, CJRole role) {

@@ -18,7 +18,7 @@ public class CJMvcConfig implements WebMvcConfigurer {
 	public void addViewControllers(ViewControllerRegistry registry) {
 
 		registry.addViewController("/").setViewName("index");
-		registry.addViewController("/index").setViewName("index");
+//		registry.addViewController("/index").setViewName("index");
 		registry.addViewController("/demo/ckeditor401").setViewName("demo/ckeditor4Demo01");
 		registry.addViewController("/demo/dataTablesDemo").setViewName("demo/dataTableDemo_ServerSide");
 		registry.addViewController("/demo/index").setViewName("demo/index");

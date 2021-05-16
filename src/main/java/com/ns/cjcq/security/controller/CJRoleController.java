@@ -24,22 +24,19 @@ public class CJRoleController {
     @Autowired
     private CJRoleService cjRoleService;
 
+
+    /*
+    * 返回到role.html
+    * */
     @GetMapping
     public  ModelAndView getSystemRolePage(ModelAndView mv){
-        mv.setViewName("/system/role");
+        mv.setViewName("admin/system/role");
         return mv;
     }
+
     /*
-    * 1.用于user进行权限设置
+    * 返回role  dataTables的所有数据
     * */
-    @GetMapping("/all")
-    public  CJSelect2Result getPlainRoles() {
-
-        List<CJSelect2Entity> allRole = cjRoleService.getPlainRoles();
-
-        return new CJSelect2Result(allRole);
-    }
-
     @PostMapping("/all")
     public  CJAjaxResult getRoles(@RequestBody(required = false) @Valid CJRoleDataTableSearchBean cjRoleDataTableSearchBean) {
         log.info(String.valueOf(cjRoleDataTableSearchBean));
@@ -49,26 +46,36 @@ public class CJRoleController {
 
 
 
-
+/*
+* 添加role
+* */
     @PostMapping
     public  CJAjaxResult addRole(@RequestBody @Valid CJViewRole cjViewRole) {
         cjRoleService.saveRole(cjViewRole);
         return CJAjaxResult.success("保存成功");
     }
+
     /*
-     * update user---获取单个用户的信息
+     * get role---获取单个角色的信息
      * */
     @GetMapping(value = "/{roleId}")
     public  CJAjaxResult getRole(@PathVariable(name = "roleId") String roleId) {
         CJViewRole roleById = cjRoleService.getRoleById(roleId);
         return CJAjaxResult.success("cjRole",roleById);
     }
+
+    /*
+    * 更新role
+    * */
     @PutMapping
-    public  CJAjaxResult getRole(@RequestBody @Valid CJViewRole cjViewRole) {
+    public  CJAjaxResult updateRole(@RequestBody @Valid CJViewRole cjViewRole) {
         cjRoleService.updateRole(cjViewRole);
         return CJAjaxResult.success("更新成功");
     }
 
+    /*
+    * 删除role
+    * */
     @DeleteMapping(value = "/{roleId}")
     public  CJAjaxResult addRole(@PathVariable(name = "roleId") String roleId) {
         cjRoleService.delRole(roleId);

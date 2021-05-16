@@ -1,12 +1,7 @@
 package com.ns.cjcq;
 
-import com.ns.cjcq.security.dao.CJResourceRepository;
-import com.ns.cjcq.security.dao.CJRoleRepository;
-import com.ns.cjcq.security.dao.CJUserRepository;
-import com.ns.cjcq.security.domain.CJResource;
-import com.ns.cjcq.security.domain.CJResourceType;
-import com.ns.cjcq.security.domain.CJRole;
-import com.ns.cjcq.security.domain.CJUser;
+import com.ns.cjcq.security.dao.*;
+import com.ns.cjcq.security.domain.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,21 +22,72 @@ public class CjcqApplicationTests {
     @Autowired
     CJUserRepository cjUserRepository;
     @Autowired
+    CJUserAndRoleRepository cjUserAndRoleRepository;
+    @Autowired
     CJRoleRepository cjRoleRepository;
     @Autowired
     CJResourceRepository cjResourceRepository;
+    @Autowired
+    CJRoleAndResourceRepository cjRoleAndResourceRepository;
 
+    /*
+    * 添加超级管理员和管理员
+    * */
     @Test
-    public void contextLoads() {
+    public void initUser() {
         CJUser cjUser = new CJUser();
-        cjUser.setUsername("account");
-        cjUser.setShowname("用户");
-        cjUser.setEmail("email");
-        cjUser.setPassword("password");
-        cjUser.setTelephoneNo("tel");
+        cjUser.setUsername("super");
+        cjUser.setShowname("超级管理员");
+        cjUser.setEmail("SuperEmail");
+        cjUser.setPassword("SuperPassword");
+        cjUser.setTelephoneNo("SuperTel");
+
+        CJUser cjUser0 = new CJUser();
+        cjUser0.setUsername("admin");
+        cjUser0.setShowname("管理员");
+        cjUser0.setEmail("AdminEmail");
+        cjUser0.setPassword("AdminPassword");
+        cjUser0.setTelephoneNo("AdminTel");
+
         cjUserRepository.save(cjUser);
+        cjUserRepository.save(cjUser0);
     }
 
+    /*
+     * 添加管理管理员角色与普通角色
+     * */
+    @Test
+    public void initRole() {
+        CJRole cjRole = new CJRole();
+        cjRole.setName("管理员角色");
+        cjRole.setRoleTag("CJAdminRole");
+        cjRole.setRoleDesc("用于后台管理");
+
+        CJRole cjRole0 = new CJRole();
+        cjRole0.setName("普通角色");
+        cjRole0.setRoleTag("CJNormalRole");
+        cjRole0.setRoleDesc("普通用户的角色");
+
+        cjRoleRepository.save(cjRole);
+        cjRoleRepository.save(cjRole0);
+    }
+
+    /*
+     * 添加用户与角色的映射
+     * */
+    @Test
+    public void initUserRole() {
+        CJUserAndRole cjUserAndRole = new CJUserAndRole();
+        cjUserAndRole.setCjUser(cjUserRepository.getOne(2L));
+        cjUserAndRole.setCjRole(cjRoleRepository.getOne(1L));
+
+        cjUserAndRoleRepository.save(cjUserAndRole);
+    }
+
+
+    /*
+    * 添加測試用戶
+    * */
     @Test
     @Rollback(false)
     public void test01() {
@@ -58,6 +104,9 @@ public class CjcqApplicationTests {
         }
         cjUserRepository.saveAll(cjUsers);
     }
+
+
+
 
     @Test
     @Rollback(false)
@@ -140,5 +189,7 @@ public class CjcqApplicationTests {
 
         cjResourceRepository.saveAll(cjResources00);
     }
+
+
 
 }

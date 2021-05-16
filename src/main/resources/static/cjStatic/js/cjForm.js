@@ -25,9 +25,11 @@
         var obj = this;
 
         $.each(jsonValue, function (name, ival) {
-            //console.log(name,"--->",ival);
-            var $input = obj.find("input [name=" + name + "]");
+            // console.log(name,"--->",ival);
+            var $input = obj.find("input[name=" + name + "]");
+            console.log("$input--->",$input);
             if ($input.attr("type") == "radio" || $input.attr("type") == "checkbox") {
+                // console.log("cjSetFormByJsonObject this is radio.....");
                 $input.each(function () {
                     if (Object.prototype.toString.apply(ival) == '[object Array]') { // 是复选框，并且是数组
                         for (var i = 0; i < ival.length; i++) {
@@ -35,6 +37,7 @@
                                 $(this).attr("checked", "checked");
                         }
                     } else {
+                        console.log("$(this).val(): ",$(this).val());
                         if ($(this).val() == ival)
                             $(this).attr("checked", "checked");
                     }

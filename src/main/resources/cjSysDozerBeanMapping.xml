@@ -64,5 +64,10 @@
         </field>
     </mapping>
 
+    <mapping>
+        <class-a>com.ns.cjcq.security.domain.CJResource</class-a>
+        <class-b>com.ns.cjcq.security.dvo.CJPermissionResource</class-b>
+    </mapping>
+
 
 </mappings>

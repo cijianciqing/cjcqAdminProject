@@ -1,17 +1,19 @@
 package com.ns.cjcq.security.controller;
 
 import cn.com.ns.cj.cjuniversalspringbootstarter.returnData.CJAjaxResult;
+import cn.hutool.core.util.ObjectUtil;
 import com.ns.cjcq.common.dataTables.entity.CJDataTablesReturnData;
-import com.ns.cjcq.security.dvo.CJEditUser;
-import com.ns.cjcq.security.dvo.CJUserDataTableSearchBean;
-import com.ns.cjcq.security.dvo.CJViewUser;
+import com.ns.cjcq.security.dvo.*;
+import com.ns.cjcq.security.service.CJUserPermissionService;
 import com.ns.cjcq.security.service.CJUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.Set;
 
 @Slf4j
 @RestController
@@ -21,25 +23,39 @@ public class CJUserController {
     @Autowired
     private CJUserService cjUserService;
 
+
+    @Autowired
+    private CJUserPermissionService cjUserPermissionService;
+
+
+
+
+    /*
+    * 返回到user.html
+    * */
     @GetMapping
     public ModelAndView getSystemUserPage(ModelAndView mv) {
-        mv.setViewName("/system/user");
+        mv.setViewName("admin/system/user");
         return mv;
     }
 
+    /*
+     * 获取user dataTables数据
+     * */
     @PostMapping("/all")
     public CJAjaxResult getUsers(@RequestBody @Valid CJUserDataTableSearchBean cjDataTablesSearchBean) {
-        //log.info(String.valueOf(cjDataTablesSearchBean));
 
         CJDataTablesReturnData<CJViewUser> allUser = cjUserService.getAllUser(cjDataTablesSearchBean);
 
-        //log.info(String.valueOf(returnData));
         return CJAjaxResult.success("all_CJUsers", allUser);
     }
 
+    /*
+    * 添加user
+    * */
     @PostMapping
     public CJAjaxResult addUser(@RequestBody @Valid CJEditUser cjEditUser) {
-        System.out.println("cjEditUser--->" + cjEditUser);
+//        System.out.println("cjEditUser--->" + cjEditUser);
         cjUserService.saveUser(cjEditUser);
         return CJAjaxResult.success("保存成功");
     }
@@ -53,6 +69,9 @@ public class CJUserController {
         return CJAjaxResult.success("cjUser", userById);
     }
 
+    /*
+    * 更新user
+    * */
     @PutMapping
     public CJAjaxResult getUser(@RequestBody @Valid CJEditUser cjEditUser) {
        log.warn(String.valueOf(cjEditUser));
@@ -60,6 +79,9 @@ public class CJUserController {
         return CJAjaxResult.success("更新成功");
     }
 
+    /*
+    * deleteUser
+    * */
     @DeleteMapping(value = "/{userId}")
     public CJAjaxResult addUser(@PathVariable(name = "userId") String userId) {
         cjUserService.delUser(userId);

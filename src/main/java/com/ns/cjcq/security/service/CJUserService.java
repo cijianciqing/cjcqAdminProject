@@ -1,8 +1,11 @@
 package com.ns.cjcq.security.service;
 
 import cn.com.ns.cj.cjuniversalspringbootstarter.dozer.CJDozerUtil;
+import cn.hutool.core.util.ObjectUtil;
 import com.ns.cjcq.common.dataTables.entity.CJDataTablesReturnData;
 import com.ns.cjcq.common.select2.entity.CJSelect2Entity;
+import com.ns.cjcq.common.zTree.entity.CJZTreeNodeResourceEntity;
+import com.ns.cjcq.security.dao.CJRoleRepository;
 import com.ns.cjcq.security.dao.CJUserAndRoleRepository;
 import com.ns.cjcq.security.dao.CJUserRepository;
 import com.ns.cjcq.security.domain.CJRole;
@@ -26,8 +29,10 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Slf4j
@@ -35,6 +40,9 @@ import java.util.Set;
 public class CJUserService {
     @Autowired
     CJDozerUtil cjDozerUtil;
+
+    @Autowired
+    CJRoleRepository cjRoleRepository;
 
     @Autowired
     CJUserRepository cjUserRepository;
@@ -105,9 +113,18 @@ public class CJUserService {
     }
 
     public CJEditUser getUserById(String userId) {
-        CJUser user = cjUserRepository.getOne(Long.valueOf(userId));
-        CJEditUser convertor = cjDozerUtil.convertor(user, CJEditUser.class);
-        return  convertor;
+        CJUser user = userId.equalsIgnoreCase("0") ? new CJUser() : cjUserRepository.getOne(Long.valueOf(userId));
+        //获取userId的所有role_id
+        Set<Long> userRoleIds = userId.equalsIgnoreCase("0") ? new HashSet<>() : user.getCjUserAndRoles().stream().map(s -> s.getCjRole().getId()).collect(Collectors.toSet());
+        //获取所有的role,并根据user的role进行转换-->user的role对应的设置为selected
+        List<CJSelect2Entity> allRoles = cjDozerUtil.convertor(cjRoleRepository.findAll(), CJSelect2Entity.class);
+        List<CJSelect2Entity> userRoles =allRoles.stream().peek(cjSelect2Option->{
+            cjSelect2Option.setSelected(userRoleIds.contains(cjSelect2Option.getId()));
+        }).collect(Collectors.toList());
+
+        CJEditUser cjEditUser = cjDozerUtil.convertor(user, CJEditUser.class);
+        cjEditUser.setUserRoles(userRoles);
+        return  cjEditUser;
 
     }
 
@@ -131,7 +148,6 @@ public class CJUserService {
             roles.forEach(role->userAndRoles.add(new CJUserAndRole(updateUser,role)));
         }
         cjUserAndRoleRepository.saveAll(userAndRoles);
-
 
     }
 }

@@ -10,6 +10,6 @@ import lombok.*;
 public class CJSelect2Entity {
     private Long id;//option value
     private String text;//option显示
-    private boolean selected = true;//选中
-    private boolean disabled = false;//禁用
+    private boolean selected;//选中
+    private boolean disabled;//禁用
 }

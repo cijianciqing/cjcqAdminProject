@@ -24,6 +24,7 @@ public class CJErrorAttribute extends DefaultErrorAttributes {
         //0 是request中
         //1 是session中
         Map<String, Object> exc = (Map<String, Object>) webRequest.getAttribute("cjExceptionHandlerMessage", 0);
+//        log.info(String.valueOf(exc));
         map.put("cjExceptionHandlerMessage",exc);
         return map;
     }

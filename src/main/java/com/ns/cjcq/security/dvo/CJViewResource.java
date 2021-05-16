@@ -16,10 +16,14 @@ import javax.validation.constraints.NotBlank;
 public class CJViewResource  {
     private Long id;
     private String name;
-    private String url;
+    private String url="#";
     private String resDesc;
     private String fontIcon;
     private Long parentId;
     private Integer sort;//类型为特殊声明
+    @NotBlank(message = "资源类型不能为空")
     private String cjResourceType;
+
+    @NotBlank(message = "资源类型不能为空")
+    private String cjUrlType;
 }

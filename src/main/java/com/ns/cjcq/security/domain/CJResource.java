@@ -1,5 +1,6 @@
 package com.ns.cjcq.security.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ns.cjcq.common.entity.CJBaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,6 +12,7 @@ import org.hibernate.annotations.Where;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 @Getter
@@ -30,6 +32,11 @@ public class CJResource  extends CJBaseEntity implements Serializable {
     private Long id;
     private String name;
     private String url;
+
+    @Enumerated(EnumType.STRING)
+    private CJUrlType cjUrlType;
+
+
     private String resDesc;
 
     private String fontIcon;
@@ -47,15 +54,18 @@ public class CJResource  extends CJBaseEntity implements Serializable {
     /**
      * 父资源
      */
+    @JsonIgnore
     @ManyToOne
     private CJResource parent;
     /**
      * 子资源
      */
+    @JsonIgnore
     @OneToMany(mappedBy = "parent",cascade = {CascadeType.REMOVE})
     @OrderBy("sort ASC")
     private List<CJResource> childs = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cjResource",cascade = CascadeType.REMOVE)
     private Set<CJRoleAndResource> cjRoleAndResources;
 
@@ -68,6 +78,7 @@ public class CJResource  extends CJBaseEntity implements Serializable {
                 ", resDesc='" + resDesc + '\'' +
                 ", fontIcon='" + fontIcon + '\'' +
                 ", sort=" + sort +
+                ", childs=" + childs +
                 '}';
     }
 }

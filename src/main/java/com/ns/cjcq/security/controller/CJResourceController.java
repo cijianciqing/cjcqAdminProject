@@ -28,7 +28,7 @@ public class CJResourceController {
      * */
     @GetMapping
     public ModelAndView getSystemUserPage(ModelAndView mv) {
-        mv.setViewName("/system/resource");
+        mv.setViewName("admin/system/resource");
         return mv;
     }
 
@@ -40,24 +40,7 @@ public class CJResourceController {
         List<CJZTreeNodeResourceEntity> allResoucres = cjResourceService.getAllResoucres();
         return CJAjaxResult.success("cjAllResources", allResoucres);
     }
-    /*
-     * 获取role 所有的 resource
-     * */
-    @GetMapping(value = "/role/{roleId}")
-    public CJAjaxResult getResourcesByRoleID(@PathVariable(value = "roleId",required = true) String roleId) {
-        List<CJZTreeNodeResourceEntity> allResoucres = cjResourceService.getResourcesByRoleID(roleId);
-        return CJAjaxResult.success("cjAllResources", allResoucres);
-    }
-    /*
-     * 设置 role的 resources
-     * */
-    @PostMapping(value = "/role/{roleId}")
-    public CJAjaxResult setResourcesByRoleID(@PathVariable(value = "roleId",required = true) String roleId,@RequestBody List<Long> resourceIds) {
-        cjResourceService.setResourcesByRoleId(roleId,resourceIds);
-        log.info(String.valueOf(resourceIds));
-        log.info(roleId);
-        return CJAjaxResult.success("cjRoleResourceAllocate");
-    }
+
 
     /*
     * 添加resource
@@ -78,21 +61,21 @@ public class CJResourceController {
     }
 
 
-    @ModelAttribute(value = "/{resourceId}")
-    public void getResource(@PathVariable(required = false,value = "resourceId") String resourceId,Model model) {
-        log.info("Resource--ModeolAttribute-------START");
-        if(ObjectUtil.isNotNull(resourceId) ) {
-            log.info("Resource--ModeolAttribute-------BEGINE-----"+resourceId);
-            CJViewResource cjViewResource = cjResourceService.getResourceById(resourceId);
-            log.info("Resource--ModeolAttribute-------END-----"+cjViewResource);
-            model.addAttribute("cjViewResource", cjViewResource);
-        }
-    }
+//    @ModelAttribute(value = "/{resourceId}")
+//    public void getResource(@PathVariable(required = false,value = "resourceId") String resourceId,Model model) {
+//        log.info("Resource--ModeolAttribute-------START");
+//        if(ObjectUtil.isNotNull(resourceId) ) {
+//            log.info("Resource--ModeolAttribute-------BEGINE-----"+resourceId);
+//            CJViewResource cjViewResource = cjResourceService.getResourceById(resourceId);
+//            log.info("Resource--ModeolAttribute-------END-----"+cjViewResource);
+//            model.addAttribute("cjViewResource", cjViewResource);
+//        }
+//    }
     /*
     * resource,基本信息更新
     * */
     @PutMapping(value = "/{resourceId}")
-    public  CJAjaxResult updateResource( @ModelAttribute("cjViewResource") @RequestBody @Valid CJViewResource cjViewResource) {
+    public  CJAjaxResult updateResource( @RequestBody @Valid CJViewResource cjViewResource) {
         log.info(String.valueOf(cjViewResource));
         cjResourceService.updateResource(cjViewResource);
         return CJAjaxResult.success("更新成功");

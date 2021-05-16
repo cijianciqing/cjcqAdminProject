@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>CJ Admin </title>
+    <th:block th:replace="~{fragment/fragment :: cjLearning_head}"/>
+
+</head>
+
+<body>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<div class="wrapper">
+    <!-- Navbar -->
+    <nav th:replace="~{fragment/fragment :: cjMainNavBar}"  ></nav>
+    <!-- /.navbar -->
+
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" th:replace="~{fragment/fragment :: cjLeftSideBar}">
+
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>150</h3>
+
+                            <p>总用户数</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                            <p>Bounce Rate</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>44</h3>
+
+                            <p>在线用户数</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>65</h3>
+
+                            <p>Unique Visitors</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+        </div>
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark" >
+        <!-- Control sidebar content goes here -->
+    </aside>
+
+    <!-- Main Footer -->
+    <footer th:replace="~{fragment/fragment :: cjMainFooter}"></footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+<th:block th:replace="~{fragment/fragment :: cjLearning_js}"/>
+<script>
+
+    var cjLTESideBar;
+    var cjLTESideBarDom = $('.nav-sidebar');
+    var cjLTESideBarCurrentLi;
+
+    /*
+    * 找到本页面对应的左侧导航栏，并打开
+    * */
+    function openCurrentMenu() {
+        console.log("openCurrentMenu()...")
+        //关闭所有选中项
+        // cjLTESideBarDom.filter(".menu-open").removeClass("menu-open");
+        // cjLTESideBarDom.filter(".active").removeClass("active");
+        let cjTargetA;
+        // console.log("window.location.pathname : ",window.location.pathname);
+        $('.nav-sidebar a').each(function (i) {
+            // console.log('.sidebar-menu a : ',$(this).attr('href'));
+            if ($(this).attr('href') == window.location.pathname) {
+                cjTargetA = $(this);
+                // console.log("cjTargetA : " ,cjTargetA);
+            }
+        });
+
+        /*以下注释为一次尝试*/
+        // let cjTargetUL = cjTargetA.siblings("ul");
+        // let cjTargetLi = cjTargetA.parent("li");
+        // console.log("cjTargetUL : " ,cjTargetUL);
+        // console.log("cjTargetLi : " ,cjTargetLi);
+        // cjLTESideBar.expand(cjTargetUL, cjTargetLi);
+        cjLTESideBarCurrentLi = cjTargetA.parent("li");
+        let cjTargetLis = cjTargetA.parents("li");
+        $.each(cjTargetLis, function (index, item) {
+            console.log(index, "--->", item);
+            if ($(item).hasClass("has-treeview")) {
+                $(item).addClass("menu-open");
+            }
+            $(item).find("a:first").addClass("active");
+        })
+
+
+    }
+
+    // function cjInitSideBar(){
+    //     let options = {
+    //         animationSpeed : 300,
+    //         accordion : false
+    //     }
+    //     cjLTESideBar = $('ul.nav-sidebar').Treeview(options);
+    // }
+
+    $(document).ready(function () {
+        // cjInitSideBar();
+        openCurrentMenu();
+    });
+    // cjLTESideBarDom.on("click","li",function () {
+    //     let cjSelectedLi  = $(this);
+    //
+    //     // if($(this).attr("id")==cjLTESideBarCurrentLi.attr("id")){
+    //     //
+    //     // }else
+    //         if(cjSelectedLi.find("a:first").attr('href')=="#"){
+    //         console.log(" cjSelectedLi ..");
+    //         //清除左側导航栏所有的选中状态
+    //         cjLTESideBarDom.find(".menu-open").removeClass("menu-open");
+    //         cjLTESideBarDom.find("li a.active").removeClass("active");
+    //
+    //         if(cjSelectedLi.hasClass("has-treeview")){
+    //             cjSelectedLi.addClass("menu-open");
+    //         }
+    //             cjSelectedLi.find("a:first").addClass("active");
+    //
+    //         let cjTargetLis = cjSelectedLi.parents("li");
+    //
+    //         $.each(cjTargetLis, function (index,item) {
+    //             if($(item).hasClass("has-treeview")){
+    //                 $(item).addClass("menu-open");
+    //             }
+    //             $(item).find("a:first").addClass("active");
+    //         })
+    //             return false;
+    //     }
+    // })
+</script>
+</body>
+
+
+</body>
+
+</html>

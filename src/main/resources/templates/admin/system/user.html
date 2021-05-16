@@ -32,7 +32,8 @@
                                  <i class="far fa-address-card"></i>
                                 </span>
                                 </div>
-                                <input disabled class="form-control form-control-sm" id="cjUserShowForm_showname" name="showname"
+                                <input disabled class="form-control form-control-sm" id="cjUserShowForm_showname"
+                                       name="showname"
                                        placeholder="" required type="text">
                             </div>
                         </div>
@@ -48,7 +49,8 @@
                                  <i class="fas fa-user"></i>
                                 </span>
                                 </div>
-                                <input disabled class="form-control form-control-sm" id="cjUserShowForm_username" name="username"
+                                <input disabled class="form-control form-control-sm" id="cjUserShowForm_username"
+                                       name="username"
                                        placeholder="" required type="text">
                             </div>
                         </div>
@@ -68,7 +70,8 @@
                                  <i class="fas fa-key"></i>
                                 </span>
                                 </div>
-                                <input disabled class="form-control form-control-sm" id="cjUserShowForm_password" name="password"
+                                <input disabled class="form-control form-control-sm" id="cjUserShowForm_password"
+                                       name="password"
                                        placeholder="" required type="password">
 
                             </div>
@@ -102,7 +105,8 @@
                                 <i class="fas fa-envelope"></i>
                                 </span>
                                 </div>
-                                <input disabled class="form-control form-control-sm" id="cjUserShowForm_email" name="email"
+                                <input disabled class="form-control form-control-sm" id="cjUserShowForm_email"
+                                       name="email"
                                        placeholder="" required type="text">
                             </div>
                         </div>
@@ -118,7 +122,8 @@
                                 <i class="fab fa-gg-circle"></i>
                                 </span>
                                 </div>
-                                <input disabled class="form-control form-control-sm" id="cjUserShowForm_roles" name="cjUserRoles"
+                                <input disabled class="form-control form-control-sm" id="cjUserShowForm_roles"
+                                       name="cjUserRoles"
                                        placeholder="" required type="text">
                             </div>
                         </div>
@@ -377,273 +382,13 @@
 </div>
 <div class="wrapper">
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-        <!-- Left navbar links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a class="nav-link" href="index3.html">Home</a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a class="nav-link" href="#">Contact</a>
-            </li>
-        </ul>
-
-        <!-- SEARCH FORM -->
-        <form class="form-inline ml-3">
-            <div class="input-group input-group-sm">
-                <input aria-label="Search" class="form-control form-control-navbar" placeholder="Search" type="search">
-                <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-
-        <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-            <!-- Messages Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-comments"></i>
-                    <span class="badge badge-danger navbar-badge">3</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <a class="dropdown-item" href="#">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img alt="User Avatar"
-                                 class="img-size-50 mr-3 img-circle"
-                                 src="node_modules/admin-lte/dist/img/user1-128x128.jpg"
-                                 th:src="@{/node_modules/admin-lte/dist/img/user1-128x128.jpg}">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Brad Diesel
-                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">Call me whenever you can...</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img alt="User Avatar"
-                                 class="img-size-50 img-circle mr-3"
-                                 src="node_modules/admin-lte/dist/img/user8-128x128.jpg"
-                                 th:src="@{/node_modules/admin-lte/dist/img/user8-128x128.jpg}">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    John Pierce
-                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">I got your message bro</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item dropdown-footer" href="#">See All Messages</a>
-                </div>
-            </li>
-            <!-- Notifications Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge">15</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header">15 Notifications</span>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <i class="fas fa-envelope mr-2"></i> 4 new messages
-                        <span class="float-right text-muted text-sm">3 mins</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <i class="fas fa-users mr-2"></i> 8 friend requests
-                        <span class="float-right text-muted text-sm">12 hours</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <i class="fas fa-file mr-2"></i> 3 new reports
-                        <span class="float-right text-muted text-sm">2 days</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item dropdown-footer" href="#">See All Notifications</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-slide="false" data-widget="control-sidebar" href="#" role="button"><i
-                        class="fas fa-th-large"></i></a>
-            </li>
-        </ul>
-    </nav>
+    <nav th:replace="~{fragment/fragment :: cjMainNavBar}"></nav>
     <!-- /.navbar -->
 
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <!-- Brand Logo -->
-        <a class="brand-link" href="index3.html">
-            <img alt="AdminLTE Logo"
-                 class="brand-image img-circle elevation-3" src="node_modules/admin-lte/dist/img/AdminLTELogo.png"
-                 style="opacity: .8"
-                 th:src="@{/node_modules/admin-lte/dist/img/AdminLTELogo.png}">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
-        </a>
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" th:replace="~{fragment/fragment :: cjLeftSideBar}">
 
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img alt="User Image"
-                         class="img-circle elevation-2" src="node_modules/admin-lte/dist/img/user2-160x160.jpg"
-                         th:src="@{/node_modules/admin-lte/dist/img/user2-160x160.jpg}">
-                </div>
-                <div class="info">
-                    <a class="d-block" href="#">Alexander Pierce</a>
-                </div>
-            </div>
-
-            <!-- Sidebar Menu -->
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-accordion="false"
-                    data-widget="treeview"
-                    role="menu">
-                    <!-- Add icons to the links using the .nav-icon class
-                         with font-awesome or any other icon font library -->
-                    <li class="nav-item has-treeview menu-open">
-                        <a class="nav-link active" href="#">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                系统管理
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview ">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="/templates/system/user.html"
-                                   th:href="@{/admin/system/user}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>用户管理</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="/templates/system/role.html"
-                                   th:href="@{/admin/system/role}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>角色管理</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="/templates/system/role.html"
-                                   th:href="@{/admin/system/resource}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>资源管理</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./index3.html">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v3</p>
-                                </a>
-                            </li>
-                            <li class="nav-item has-treeview ">
-                                <a class="nav-link " href="#">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        Dashboard V2
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview ">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="./index.html">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Dashboard v1</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="./cjIndex.html">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>CL Dashboard </p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="./index3.html">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Dashboard v3</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview menu-open">
-                        <a class="nav-link active" href="#">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                左侧导航栏第一级
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview ">
-                            <li class="nav-item ">
-                                <a class="nav-link " href="/templates/system/user.html"
-                                   th:href="@{/admin/system/user}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>左侧导航栏第二级00</p>
-                                </a>
-                            </li>
-                            <li class="nav-item has-treeview ">
-                                <a class="nav-link " href="#">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        左侧导航栏第二级
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview ">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="./index.html">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>左侧导航栏第三级</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="./cjIndex.html">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>左侧导航栏第三级</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/widgets.html">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Widgets
-                                <span class="right badge badge-danger">New</span>
-                            </p>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <!-- /.sidebar-menu -->
-        </div>
-        <!-- /.sidebar -->
     </aside>
 
 
@@ -673,19 +418,6 @@
                                         <button class="btn btn-success" onclick="cjAddUser()"
                                                 type="button">
                                             <i class="fa fa-plus"></i> 新增
-                                        </button>
-                                        <button class="btn btn-primary single " onclick="$.operate.editTab()">
-                                            <i class="fa fa-edit"></i> 修改
-                                        </button>
-                                        <button class="btn btn-danger multiple" onclick="$.operate.removeAll()">
-                                            <i class="fa far fa-trash-alt"></i> 删除
-                                        </button>
-                                        <button class="btn btn-info" onclick="$.table.importExcel()">
-                                            <i class="fa fa-upload"></i> 导入
-                                        </button>
-                                        <button class="btn btn-warning" onclick="$.table.exportExcel()"
-                                                style="color: white">
-                                            <i class="fa fa-download"></i> 导出
                                         </button>
                                     </div>
 
@@ -801,13 +533,7 @@
     </aside>
 
     <!-- Main Footer -->
-    <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-        All rights reserved.
-        <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 3.0.5
-        </div>
-    </footer>
+    <footer th:replace="~{fragment/fragment :: cjMainFooter}"></footer>
 </div>
 <!-- ./wrapper -->
 
@@ -827,10 +553,10 @@
     * */
     var cjUniversalExceptionMessage
 
-/*
-* S1 START. user --dataTables及其相关的CRUD操作
-*
-* */
+    /*
+    * S1 START. user --dataTables及其相关的CRUD操作
+    *
+    * */
     /*
     * S1-1 START. 全局配置------------------------------------------------------------------------------------------------
     * */
@@ -988,25 +714,6 @@
     $(document).ready(function () {
         /*始化data tables*/
         cjInitDataTables();
-
-        /*
-        * 获取所有的roles
-        * */
-        $.ajax({
-            url: "/admin/system/role/all",
-            method: "get",
-            dataType: "json",
-            contentType: "application/json",
-            success: function (data) {
-                // console.log("取所有的roles: ");
-                // console.log(typeof (data));
-                cjAllUserRoles = data.results
-                // console.log("cjAllUserRoles-->",cjAllUserRoles);
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                bootbox.alert("cj Get all Roles 获取失败,请联系管理员!");
-            }
-        });
     });
 
     /*
@@ -1027,9 +734,10 @@
  * 清空user add/update 模态框内所有内容
  * */
     function cjUserModalReset(modalId) {
-        $(modalId + " form" ).cjFormReset();//清空表单
-        $(modalId + " form .select2" ).val(null).trigger('change');//清空select2
-
+        $(modalId + " form").cjFormReset();//清空表单
+        // $("#cjUserUpdateForm_roles" ).val(null).trigger('change');//清空select2
+        // $("#cjUserUpdateForm_roles" ).select2('destroy');
+        // $("#cjUserUpdateForm_roles" ).empty().trigger("change");
     }
 
     /*
@@ -1042,70 +750,75 @@
 
 
 
-        /*
-         * S1-3-1 START. user dataTables CREATE---------------------------------------------------------------------------------
-         * 添加用户
-         * 1.打开模态框【同时设置：关闭模态框时，reset modal】
-         * 2.初始化select2
-         * */
+    /*
+     * S1-3-1 START. user dataTables CREATE---------------------------------------------------------------------------------
+     * 添加用户
+     * 1.打开模态框【同时设置：关闭模态框时，reset modal】
+     * 2.初始化select2
+     * */
     function cjAddUser() {
-        $("#cjUserAddModal").on('show.bs.modal', function (e) {
-            $('#cjUserAddForm_roles').select2({
-                dropdownParent: $('#cjUserAddModal'),
-                theme: 'bootstrap4',
-                placeholder: "Select  roles",
-                ajax: {
-                    url: "/admin/system/role/all",
-                    method: "get",
-                    dataType: "json",
-                    contentType: "application/json",
-                    processResults: function (data) {
-                        // Transforms the top-level key of the response object from 'items' to 'results'
-                        return {
-                            results: data.results
-                        }
-                    }
-                }
-            });
-        }).on('hidden.bs.modal', function (e) {
-            cjUserModalReset("#cjUserAddModal");
-            $('#cjUserAddForm_roles').select2('destroy');
-        }).modal('show');
-    }
-        /*
-        * 添加用户--提交
-        * */
-        $("#cjUserModalAdd_subbtn").on("click", function () {
 
-            var cjUserAddFormData = $("#cjUserAddForm").cjFormSerializeObject();
-            let cjAddUserRolesData02 =  $("#cjUserAddForm_roles").select2("data");
-            cjUserAddFormData["userRoles"] = cjAddUserRolesData02;
-            $.ajax({
-                url: "/admin/system/user",
-                method: "post",
-                dataType: "json",
-                contentType: "application/json",
-                data: JSON.stringify(cjUserAddFormData),
-                success: function (data) {
-                    if (data.error) {
-                        cjUniversalExceptionMessage = data.cjExceptionHandlerMessage;
-                        //console.log("cjcq统一错误处理报错--cj user add ： ", cjUniversalExceptionMessage);
-                        if (cjUniversalExceptionMessage.cjMessage.msg == "cjValidateMessage") {
-                            let cjStringError = $.cjValidateErrorToString(cjUniversalExceptionMessage.cjMessage.data);
-                            bootbox.alert("cj add user " + " 失败 : " + cjStringError + ",请联系管理员!");
-                        }
-                    } else {
-                        bootbox.alert("cj user 添加成功!");
-                        $("#cjUserAddModal").modal('hide');
-                        cjSysUserTableInstance.ajax.reload(null, false);//cj user dataTables reload时，保证页面不变
-                    }
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    bootbox.alert("cj create User 失败,请联系管理员!");
-                }
+        $.ajax({//更新
+            url: "/admin/system/user/" + 0,
+            method: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data) {
+                var cjAddUser = data.data;
+                var cjAddUserRoles = cjAddUser.userRoles;
+                $("#cjUserAddModal").on('shown.bs.modal', function (e) {
+                    //初始化select
+                    $("#cjUserAddForm_roles").empty();
+                    $('#cjUserAddForm_roles').select2({
+                        dropdownParent: $('#cjUserAddModal'),
+                        theme: 'bootstrap4',
+                        placeholder: "Select  roles",
+                        data: cjAddUserRoles
+                    });
 
-            });
+                }).on('hidden.bs.modal', function (e) {
+                    cjUserModalReset("#cjUserAddModal");
+
+                }).modal('show');
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                bootbox.alert("cj add--Get User获取失败,请联系管理员!");
+            }
         });
+    }
+
+    /*
+    * 添加用户--提交
+    * */
+    $("#cjUserModalAdd_subbtn").on("click", function () {
+
+        var cjUserAddFormData = $("#cjUserAddForm").cjFormSerializeObject();
+        let cjAddUserRolesData02 = $("#cjUserAddForm_roles").select2("data");
+        cjUserAddFormData["userRoles"] = cjAddUserRolesData02;
+        $.ajax({
+            url: "/admin/system/user",
+            method: "post",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(cjUserAddFormData),
+            success: function (data) {
+                if (data.code == "500") {//只针对校验失败
+                    //let cjErrorMsg = data.msg;
+                    let cjErrorData = data.data;
+                    let cjErrorDetail = $.cjValidateErrorToString(cjErrorData);
+                    bootbox.alert("cj add user " + " 失败 : " + cjErrorDetail + ",请联系管理员!");
+                } else {
+                    bootbox.alert("cj user 添加成功!");
+                    $("#cjUserAddModal").modal('hide');
+                    cjSysUserTableInstance.ajax.reload(null, false);//cj user dataTables reload时，保证页面不变
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                bootbox.alert("cj create User 失败,请联系管理员!");
+            }
+
+        });
+    });
     /*
    * S1-3-1 END. user dataTables CREATE---------------------------------------------------------------------------------
      * */
@@ -1113,145 +826,118 @@
     * S1-3-2 START. user dataTables UPDATE---------------------------------------------------------------------------------
     * 更新用户--打开模态框
     * */
-        function cjEditUser(userId) {
-            /*
-            * 1.获取user
-            * 2.清空-->设置form
-            * 3.显示modal
-            * */
-            $.ajax({//更新
-                url: "/admin/system/user/" + userId,
-                method: "get",
-                dataType: "json",
-                contentType: "application/json",
-                success: function (data) {
-                    var cjEditUser = data.data;
-                    var cjEditUserRoles = cjEditUser.userRoles;
-                    console.log("cjEditUserRoles: ",cjEditUserRoles);
-                   /* var cjEditUserRoleArray = cjEditUserRoles.map((item,index) => {
-                        return item.id;
-                    })*/
-                    //console.log("cjEditUserRoleArray-->",cjEditUserRoleArray );
-                    $("#cjUserUpdateForm").cjSetFormByJsonObject(cjEditUser);
-                    $("#cjUserUpdateModal").on('show.bs.modal', function (e) {
-                        // $('#cjUserUpdateForm_roles').select2();
-                        //初始化select
-                        $('#cjUserUpdateForm_roles').select2({
-                            dropdownParent: $('#cjUserUpdateModal'),
-                            theme: 'bootstrap4',
-                            placeholder: "Select  roles",
-                            ajax: {
-                                url: "/admin/system/role/all",
-                                method: "get",
-                                dataType: "json",
-                                contentType: "application/json",
-                                processResults: function (data) {
-                                    return {
-                                        results: data.results
-                                    }
-                                }
-                            }
-                        });
-
-                        $('#cjUserUpdateForm_roles')[0].options.length = 0;
-                        $.each(cjEditUserRoles,function (index,item) {
-                            let option = new Option(item.text, item.id, true, true);
-                            $('#cjUserUpdateForm_roles').append(option).trigger('change');
-                        })
-
-                        $('#cjUserUpdateForm_roles').trigger({
-                            type: 'select2:select',
-                            params: {
-                                data: cjEditUserRoles
-                            }
-                        });
-
-                    }).on('hidden.bs.modal', function (e) {
-                        cjUserModalReset("#cjUserUpdateModal");
-                    }).modal('show');
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    bootbox.alert("cj Upate--Get User获取失败,请联系管理员!");
-                }
-            });
-
-
-        }
-
+    function cjEditUser(userId) {
         /*
-      * 更新用户--提交
-      * */
-        $("#cjUserModalUpdate_subbtn").on("click", function () {
-            var cjUserUpdateFormData = $("#cjUserUpdateForm").cjFormSerializeObject();
-            let cjAddUserRolesData02 =  $("#cjUserUpdateForm_roles").select2("data");
-            cjUserUpdateFormData["userRoles"] = cjAddUserRolesData02;
-            $.ajax({
-                url: "/admin/system/user",
-                method: "put",
-                dataType: "json",
-                contentType: "application/json",
-                data: JSON.stringify(cjUserUpdateFormData),
-                success: function (data) {
-                    if (data.error) {
-                        cjUniversalExceptionMessage = data.cjExceptionHandlerMessage;
-                        //console.log("cjcq统一错误处理报错--cj user update ： ", cjUniversalExceptionMessage);
-                        if (cjUniversalExceptionMessage.cjMessage.msg == "cjValidateMessage") {
-                            let cjStringError = $.cjValidateErrorToString(cjUniversalExceptionMessage.cjMessage.data);
-                            bootbox.alert("cj update user " + " 失败 : " + cjStringError + ",请联系管理员!");
-                        }
-                    } else {
-                        bootbox.alert("cj user Update 成功!");
-                        $("#cjUserUpdateForm").cjFormReset();
-                        $("#cjUserUpdateModal").modal('hide');
-                        cjSysUserTableInstance.ajax.reload(null, false);//cj user dataTables reload时，保证页面不变
-                    }
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    bootbox.alert("cj Update User 失败,请联系管理员!");
-                }
+        * 1.获取user
+        * 2.清空-->设置form
+        * 3.显示modal
+        * */
+        $.ajax({//更新
+            url: "/admin/system/user/" + userId,
+            method: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data) {
+                var cjEditUser = data.data;
+                var cjEditUserRoles = cjEditUser.userRoles;
+                $("#cjUserUpdateForm").cjSetFormByJsonObject(cjEditUser);
+                $("#cjUserUpdateModal").on('shown.bs.modal', function (e) {
+                    //初始化select
+                    $("#cjUserUpdateForm_roles").empty();
+                    $('#cjUserUpdateForm_roles').select2({
+                        dropdownParent: $('#cjUserUpdateModal'),
+                        theme: 'bootstrap4',
+                        placeholder: "Select  roles",
+                        data: cjEditUserRoles
+                    });
 
-            });
+                }).on('hidden.bs.modal', function (e) {
+                    cjUserModalReset("#cjUserUpdateModal");
+
+                }).modal('show');
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                bootbox.alert("cj Upate--Get User获取失败,请联系管理员!");
+            }
         });
+
+
+    }
+
+    /*
+  * 更新用户--提交
+  * */
+    $("#cjUserModalUpdate_subbtn").on("click", function () {
+        var cjUserUpdateFormData = $("#cjUserUpdateForm").cjFormSerializeObject();
+        let cjAddUserRolesData02 = $("#cjUserUpdateForm_roles").select2("data");
+        cjUserUpdateFormData["userRoles"] = cjAddUserRolesData02;
+        $.ajax({
+            url: "/admin/system/user",
+            method: "put",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(cjUserUpdateFormData),
+            success: function (data) {
+                if (data.code == "500") {//只针对校验失败
+                    //let cjErrorMsg = data.msg;
+                    let cjErrorData = data.data;
+                    let cjErrorDetail = $.cjValidateErrorToString(cjErrorData);
+                    bootbox.alert("cj add user " + " 失败 : " + cjErrorDetail + ",请联系管理员!");
+                } else {
+                    bootbox.alert("cj user Update 成功!");
+                    $("#cjUserUpdateForm").cjFormReset();
+                    $("#cjUserUpdateModal").modal('hide');
+                    cjSysUserTableInstance.ajax.reload(null, false);//cj user dataTables reload时，保证页面不变
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                bootbox.alert("cj Update User 失败,请联系管理员!");
+            }
+
+        });
+    });
     /*
       * S1-3-2 END. user dataTables UPDATE------------------------------------------------------------------------------
       * */
 
-        /*
-       * S1-3-3 START. user dataTables DELETE---------------------------------------------------------------------------
-       * 删除用户
-       * */
-        function cjRemoveUser(userId) {
-            bootbox.confirm("确定删除？",
-                function (result) {
-                    console.log('This was logged in the callback: ' + result);
-                    if (result) {
-                        $.ajax({//更新
-                            url: "/admin/system/user/" + userId,
-                            method: "delete",
-                            dataType: "json",
-                            contentType: "application/json",
-                            //data: JSON.stringify(cjUpdateData),
-                            success: function () {
-                                bootbox.alert("cj delete user 成功！");
-                                cjSysUserTableInstance.ajax.reload();
-                            },
-                            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                bootbox.alert("cj delet User 失败,请联系管理员!");
-                                //error: cjAjaxErrorHandler("updateUser", XMLHttpRequest);
-                            }
-                        });
-                    }
-                });
-        }
-        /*
-        * S1-3-3 END. user dataTables DELETE---------------------------------------------------------------------------------
-        * */
+    /*
+   * S1-3-3 START. user dataTables DELETE---------------------------------------------------------------------------
+   * 删除用户
+   * */
+    function cjRemoveUser(userId) {
+        bootbox.confirm("确定删除？",
+            function (result) {
+                console.log('This was logged in the callback: ' + result);
+                if (result) {
+                    $.ajax({//更新
+                        url: "/admin/system/user/" + userId,
+                        method: "delete",
+                        dataType: "json",
+                        contentType: "application/json",
+                        //data: JSON.stringify(cjUpdateData),
+                        success: function () {
+                            bootbox.alert("cj delete user 成功！");
+                            cjSysUserTableInstance.ajax.reload();
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            bootbox.alert("cj delet User 失败,请联系管理员!");
+                            //error: cjAjaxErrorHandler("updateUser", XMLHttpRequest);
+                        }
+                    });
+                }
+            });
+    }
 
-         /*
-        * S1-3-4 START. user dataTables Retrieve---------------------------------------------------------------------------------
-        * */
-    cjUserTableDom.on("dblclick","tr",function () {
-        let rowData = cjSysUserTableInstance.row( this ).data();
+    /*
+    * S1-3-3 END. user dataTables DELETE---------------------------------------------------------------------------------
+    * */
+
+    /*
+   * S1-3-4 START. user dataTables Retrieve---------------------------------------------------------------------------------
+   * */
+    cjUserTableDom.on("dblclick", "tr", function () {
+        let rowData = cjSysUserTableInstance.row(this).data();
         $.ajax({//更新
             url: "/admin/system/user/" + rowData.id,
             method: "get",
@@ -1260,13 +946,13 @@
             success: function (data) {
                 let cjRetrievedUserData = data.data;
                 let cjRetrievedUserRoles = cjRetrievedUserData.userRoles;
-                let cjRetrieveUserRoleArray = cjRetrievedUserRoles.map((item,index) => {
-                    return item.text;
+                let cjRetrieveUserRoleArray = $.map(cjRetrievedUserRoles, function (item) {
+                    return item.selected ? item.text : null;
                 })
                 $("#cjUserShowForm").cjSetFormByJsonObject(cjRetrievedUserData);
                 $("#cjUserShowModal").on('show.bs.modal', function (e) {
 
-                    $('#cjUserShowForm_roles').val(cjRetrieveUserRoleArray);
+                    $('#cjUserShowForm_roles').val(cjRetrieveUserRoleArray.join(","));
                 }).on('hidden.bs.modal', function (e) {
                     cjUserModalReset("#cjUserShowModal");
                 }).modal('show');
@@ -1276,17 +962,17 @@
             }
         });
     })
-        /*
-       * S1-3-4 END. user dataTables Retrieve---------------------------------------------------------------------------------
-       * */
+    /*
+   * S1-3-4 END. user dataTables Retrieve---------------------------------------------------------------------------------
+   * */
     /*
     *S1-3 START. user dataTables CRUD---------------------------------------------------------------------------------
     * */
 
-/*
-* S1 END. user --dataTables及其相关的CRUD操作
-*
-* */
+    /*
+    * S1 END. user --dataTables及其相关的CRUD操作
+    *
+    * */
 </script>
 
 

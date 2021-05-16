@@ -10,6 +10,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -27,7 +28,8 @@ public class CJGlobalExceptionHandler {
 
     /*校验错误处理*/
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public String cjValidateException(MethodArgumentNotValidException e, HttpServletRequest request) {
+    @ResponseBody
+    public CJAjaxResult cjValidateException(MethodArgumentNotValidException e, HttpServletRequest request) {
         BindingResult bindingResult = e.getBindingResult();
         List<FieldError> fieldErrorList = bindingResult.getFieldErrors();
         Map<String, Object> cjValidateErrors = new HashMap<>(fieldErrorList.size());
@@ -38,13 +40,14 @@ public class CJGlobalExceptionHandler {
 
 //        CJReturnedData cjReturnedData = CJRDataUtil.Err(400, "后台校验错误");
 //        cjReturnedData.setData(cjValidateError);
-        CJAjaxResult cjAjaxResult = CJAjaxResult.error("cjValidateMessage",cjValidateErrors);
+        return CJAjaxResult.error("cjValidateMessage",cjValidateErrors);
 
-        Map<String, Object> map = new HashMap<>();
-        map.put("cjMessage", cjAjaxResult);
-        //request.setAttribute("javax.servlet.error.status_code", 500);
-        request.setAttribute("cjExceptionHandlerMessage", map);
-        return "forward:/error";
+
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("cjMessage", cjAjaxResult);
+//        //request.setAttribute("javax.servlet.error.status_code", 500);
+//        request.setAttribute("cjExceptionHandlerMessage", map);
+//        return "forward:/error";
     }
 
     /*全局异常处理*/
