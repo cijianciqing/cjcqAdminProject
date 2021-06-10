@@ -1,10 +1,11 @@
-
-
-
-
 ####################################
 #              开发环境            #
 ####################################
+
+
+
+
+
 ## embedded tomcat9配置
 server:
   port: 8082
@@ -17,6 +18,10 @@ server:
 
 # 数据源配置
 spring:
+  session:
+    #存放session的位置
+    store-type: none
+
   datasource:
     url: jdbc:mysql://172.20.1.117:3306/cjcq?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
     username: wqn

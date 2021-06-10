@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>403 Not Authorized</title>
+    <th:block th:replace="~{fragment/fragment :: cjLearning_head}"/>
+
+</head>
+
+<body>
+
+<body >
+<div class="container-fluid">
+    <!-- Small boxes (Stat box) -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="error-page">
+            <h2 class="headline text-warning"> 403</h2>
+
+            <div class="error-content">
+                <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Page  is not authorized.</h3>
+
+                <p>
+                    You are not authorized to visit the page.
+                    Meanwhile, you may <a href="../../index.html" th:href="@{/admin}">return to dashboard</a> or try using the search form.
+                </p>
+
+                <form class="search-form">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" name="submit" class="btn btn-warning"><i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.input-group -->
+                </form>
+            </div>
+            <!-- /.error-content -->
+        </div>
+        <!-- /.error-page -->
+    </section>
+</div>
+
+<!-- /.content-wrapper -->
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>
+
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+<th:block th:replace="~{fragment/fragment :: cjLearning_js}"/>
+
+</body>
+
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<title>Session失效</title>
+	<th:block th:replace="~{fragment/fragment :: cjLearning_head}"/>
+
+</head>
+
+<body>
+
+<body >
+<div class="container-fluid">
+	<!-- Small boxes (Stat box) -->
+	<!-- Main content -->
+	<section class="content">
+		<div class="error-page">
+			<h2 class="headline text-warning">Ahh</h2>
+
+			<div class="error-content">
+				<h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Session is invalid.</h3>
+
+
+				<p>
+					You need to log in again.
+				</p>
+
+
+				<div id="page_div"></div>
+			</div>
+			<!-- /.error-content -->
+		</div>
+		<!-- /.error-page -->
+	</section>
+</div>
+
+<!-- /.content-wrapper -->
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+	<!-- Control sidebar content goes here -->
+</aside>
+
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+<script th:src="@{/node_modules/jquery/dist/jquery.js}" src="node_modules/jquery/dist/jquery.js"></script>
+<script language="javascript">
+	var num = 3; //倒计时的秒数
+	var URL = "index.html";
+	var id = window.setInterval('doUpdate()', 1000);
+	function doUpdate() {
+		document.getElementById('page_div').innerHTML = '将在'+num+'秒后自动跳转到首页' ;
+		if(num == 0) {
+			window.clearInterval(id);
+			window.location = URL;
+		}
+		num --;
+	}
+</script>
+</body>
+
+
+</body>
+
+</html>

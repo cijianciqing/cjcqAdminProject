@@ -17,11 +17,25 @@ public class CJMvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 
-		registry.addViewController("/").setViewName("index");
-//		registry.addViewController("/index").setViewName("index");
+/*
+* 以下为测试
+* */
+		//		registry.addViewController("/index").setViewName("index");
 		registry.addViewController("/demo/ckeditor401").setViewName("demo/ckeditor4Demo01");
 		registry.addViewController("/demo/dataTablesDemo").setViewName("demo/dataTableDemo_ServerSide");
 		registry.addViewController("/demo/index").setViewName("demo/index");
+		registry.addViewController("/imooc-signIn").setViewName("imooc-signIn");
+
+/*
+ * 以下为正式环境
+ * */
+//		首页
+		registry.addViewController("/").setViewName("index");
+		registry.addViewController("/index").setViewName("index");
+//		登录页面
+		registry.addViewController("/auth/signIn").setViewName("auth/signIn");
+//		session invalid
+		registry.addViewController("/session/invalid").setViewName("session/invalid");
 	}
 
 	/*静态资源设置*/

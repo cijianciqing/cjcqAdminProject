@@ -685,13 +685,14 @@
                 //初始化
                 cjzTreeObj = $.fn.zTree.init($("#cjSysResourceTree"), setting, zNodes);
 
-                var cjAllnodes = cjzTreeObj.getNodes();
+                // var cjAllnodes = cjzTreeObj.getNodes();
 
-               /* for (var i = 0; i < cjAllnodes.length; i++) { //展开到第二层节点
-                    cjzTreeObj.expandNode(cjAllnodes[i], true, false, true);
-                }*/
-
+                // for (var i = 0; i < cjAllnodes.length; i++) { //展开到第二层节点
+                //     cjzTreeObj.expandNode(cjAllnodes[i], true, false, true);
+                // }
                 cjzTreeObj.expandAll(true);
+
+                // setTimeout("cjzTreeObj.expandAll(true)",200);
             },
             error: function () {
                 bootbox.alert("/article/category/getList 获取 categories 失败，无法初始化ztree,请联系理管理员");

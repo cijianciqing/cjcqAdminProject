@@ -6,19 +6,19 @@
 
     <!-- user 转换为 editUser格式 -->
     <mapping>
-        <class-a>com.ns.cjcq.security.domain.CJUser</class-a>
-        <class-b>com.ns.cjcq.security.dvo.CJEditUser</class-b>
+        <class-a>com.ns.cjcq.security.crud.domain.CJUser</class-a>
+        <class-b>com.ns.cjcq.security.crud.dvo.CJEditUser</class-b>
         <field>
             <a>cjUserAndRoles</a>
             <b>userRoles</b>
-            <a-hint>com.ns.cjcq.security.domain.CJUserAndRole</a-hint>
+            <a-hint>com.ns.cjcq.security.crud.domain.CJUserAndRole</a-hint>
             <b-hint>com.ns.cjcq.common.select2.entity.CJSelect2Entity</b-hint>
         </field>
     </mapping>
 
     <!-- userAndRole 转换为 select2格式 -->
     <mapping>
-        <class-a>com.ns.cjcq.security.domain.CJUserAndRole</class-a>
+        <class-a>com.ns.cjcq.security.crud.domain.CJUserAndRole</class-a>
         <class-b>com.ns.cjcq.common.select2.entity.CJSelect2Entity</class-b>
         <field>
             <a>cjRole.id</a>
@@ -32,7 +32,7 @@
 
     <!-- role 转换为 select2格式 -->
     <mapping>
-        <class-a>com.ns.cjcq.security.domain.CJRole</class-a>
+        <class-a>com.ns.cjcq.security.crud.domain.CJRole</class-a>
         <class-b>com.ns.cjcq.common.select2.entity.CJSelect2Entity</class-b>
         <field>
             <a>name</a>
@@ -42,7 +42,7 @@
 
     <!--  CJResource To CJViewResource -->
     <mapping>
-        <class-a>com.ns.cjcq.security.domain.CJResource</class-a>
+        <class-a>com.ns.cjcq.security.crud.domain.CJResource</class-a>
         <class-b>com.ns.cjcq.common.zTree.entity.CJZTreeNodeResourceEntity</class-b>
         <field>
             <a>parent.id</a>
@@ -56,8 +56,8 @@
 
     <!--  CJResource To CJViewResource -->
     <mapping>
-        <class-a>com.ns.cjcq.security.domain.CJResource</class-a>
-        <class-b>com.ns.cjcq.security.dvo.CJViewResource</class-b>
+        <class-a>com.ns.cjcq.security.crud.domain.CJResource</class-a>
+        <class-b>com.ns.cjcq.security.crud.dvo.CJViewResource</class-b>
         <field>
             <a>parent.id</a>
             <b>parentId</b>
@@ -65,8 +65,8 @@
     </mapping>
 
     <mapping>
-        <class-a>com.ns.cjcq.security.domain.CJResource</class-a>
-        <class-b>com.ns.cjcq.security.dvo.CJPermissionResource</class-b>
+        <class-a>com.ns.cjcq.security.crud.domain.CJResource</class-a>
+        <class-b>com.ns.cjcq.security.crud.dvo.CJPermissionResource</class-b>
     </mapping>
 
 
